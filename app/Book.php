@@ -4,30 +4,30 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Author;
 
 class Book extends Model
 {
 	use SoftDeletes;
 	
-	const STATUS_NOT_READ = 1;
-	const STATUS_SPEED_READ = 2;
-	const STATUS_READ = 3;
-	const STATUS_AUDIO = 4;
-	const STATUS_OUTLINED = 5; //законспектирована
+	const STATUS_NOT_READ = 0;
+	const STATUS_SPEED_READ = 1;
+	const STATUS_READ = 2;
+	const STATUS_AUDIO = 3;
+	const STATUS_OUTLINED = 4; //законспектирована
 	
     protected $table = 'books';
 
 
     public function author()
 	{
-		// if ($this->id_author) $this->author = new Author($this->id_author);
-		// return $this;
+		return $this->belongsTo('App\Author');
 	}
 
-	public function convertState($state = null)
+	public function convertStatus($status = null)
 	{
-		$state = $state ? $state : $this->state;
-		switch ($state) {
+		$status = $status ? $status : $this->status;
+		switch ($status) {
 			case self::STATUS_NOT_READ: return 'не прочитана';
 			case self::STATUS_SPEED_READ: return 'просмотрена';
 			case self::STATUS_READ: return 'прочитана';

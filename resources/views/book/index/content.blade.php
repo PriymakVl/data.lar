@@ -36,13 +36,19 @@
 				<tr>
 					<td>4</td>
 					<td>Автор</td>
-					<td class="text-left"><?//=$book->author ? $book->author->surname : '<span class="text-danger">нет</span>'?></td>
+					<td class="text-left">
+						@if($book->author)
+							<a href="/author/{{ $book->author->id }}">{{ $book->author->full_name }}</a>
+						@else
+							<span class="text-danger">нет</span>
+						@endif	
+					</td>
 				</tr>
 				<!-- state book -->
 				<tr>
 					<td>5</td>
 					<td>Состояние</td>
-					<td class="left"><?//=$book->convertState()?></td>
+					<td class="left">{{ $book->convertStatus() }}</td>
 				</tr>
 				<!-- book file -->
 				<tr>
