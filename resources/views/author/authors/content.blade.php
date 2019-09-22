@@ -29,10 +29,10 @@
             <tr>
               <td>{{ $loop->index + 1 }}</td>
               <td class="text-left">
-                <? printf('<a href="/author/%s">%s</a>', $author->id, $author->last_name.' '.$author->first_name.' '.$author->patronymic); ?>
+                <? printf('<a href="/author/%s">%s</a>', $author->id, $author->full_name); ?>
               </td>
               <td>{!! $author->books ? count($author->books) : '<span class="text-danger">нет</span>' !!}</td>
-              <td>5</td>
+              <td>нет</td>
             </tr>
         @empty
           <tr>

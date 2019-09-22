@@ -3,17 +3,19 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Book extends Model
 {
-	const STATE_NOT_READ = 1;
-	const STATE_SPEED_READ = 2;
-	const STATE_READ = 3;
-	const STATE_AUDIO = 4;
-	const STATE_OUTLINED = 5; //законспектирована
+	use SoftDeletes;
+	
+	const STATUS_NOT_READ = 1;
+	const STATUS_SPEED_READ = 2;
+	const STATUS_READ = 3;
+	const STATUS_AUDIO = 4;
+	const STATUS_OUTLINED = 5; //законспектирована
 	
     protected $table = 'books';
-    public $timestamps = false;
 
 
     public function author()
@@ -26,11 +28,11 @@ class Book extends Model
 	{
 		$state = $state ? $state : $this->state;
 		switch ($state) {
-			case self::STATE_NOT_READ: return 'не прочитана';
-			case self::STATE_SPEED_READ: return 'просмотрена';
-			case self::STATE_READ: return 'прочитана';
-			case self::STATE_AUDIO: return 'прослушана';
-			case self::STATE_OUTLINED: return 'законспектирована';
+			case self::STATUS_NOT_READ: return 'не прочитана';
+			case self::STATUS_SPEED_READ: return 'просмотрена';
+			case self::STATUS_READ: return 'прочитана';
+			case self::STATUS_AUDIO: return 'прослушана';
+			case self::STATUS_OUTLINED: return 'законспектирована';
 			default: return 'не известно';
 		}
 	}

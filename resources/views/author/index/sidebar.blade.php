@@ -16,7 +16,7 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="/author/delete/{{ $author->id }}">
       <span data-feather="trash"></span>
       Удалить автора
     </a>

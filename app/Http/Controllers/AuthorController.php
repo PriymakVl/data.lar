@@ -9,7 +9,7 @@ class AuthorController extends Controller
 {
     public function authors()
     {
-    	$authors = Author::where('status', 1)->orderBy('last_name', 'desc')->paginate(5);
+    	$authors = Author::orderBy('last_name', 'desc')->paginate(5);
     	return view('author.authors.base', compact('authors'));
     }
 
@@ -17,5 +17,12 @@ class AuthorController extends Controller
     {
     	$author = Author::find($id);
     	return view('author.index.base', compact('author'));
+    }
+
+    public function delete($id)
+    {
+        // Author::destroy($id)
+        if (false) return redirect()->route('authors')->with('message', 'success');
+        return redirect()->back()->with('message', 'error');
     }
 }

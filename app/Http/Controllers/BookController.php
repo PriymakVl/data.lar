@@ -10,7 +10,7 @@ class BookController extends Controller
 {
     public function books()
     {
-    	$books = Book::where('status', 1)->orderBy('rating', 'desc')->paginate(5);
+    	$books = Book::orderBy('rating', 'desc')->paginate(5);
     	return view('book.books.base', compact('books'));
     }
 

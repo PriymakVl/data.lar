@@ -18,4 +18,5 @@ Route::get('/book/{id}', ['as' => 'book', 'uses' => 'BookController@index']);
 
 Route::get('/authors', ['as' => 'authors', 'uses' => 'AuthorController@authors']);
 Route::get('/author/{id}', ['as' => 'author', 'uses' => 'AuthorController@index']);
+Route::get('/author/delete/{id}', ['as' => 'author_delete', 'uses' => 'AuthorController@delete']);
 

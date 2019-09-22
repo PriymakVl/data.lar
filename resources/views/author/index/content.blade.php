@@ -18,7 +18,7 @@
 		        <tr>
 					<td>1</td>
 					<td>ФИО</td>
-					<td class="text-left">{{ $author->surname }}</td>
+					<td class="text-left">{{ $author->full_name }}</td>
 				</tr>
 				<!-- books -->
 				<tr>

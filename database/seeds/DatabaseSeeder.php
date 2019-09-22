@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\database\seeds\AuthorsTableSeeder;
+use App\database\seeds\BooksTableSeeder;
+use App\database\seeds\QuotesTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,5 +15,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        // $this->call(AuthorsTableSeeder::class);
+        // $this->call(BooksTableSeeder::class);
+        // $this->call(QuotesTableSeeder::class);
     }
 }

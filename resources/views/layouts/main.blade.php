@@ -47,7 +47,12 @@
         </div>
       </nav>
 
-	    <!-- content -->
+	   <!-- messages -->
+<!--       <div class="alert alert-dunger">
+        Сообщение о ошибке
+      </div> -->
+
+      <!-- content -->
 	    @yield('content')
 
 	</div>
