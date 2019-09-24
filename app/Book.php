@@ -24,7 +24,7 @@ class Book extends Model
 		return $this->belongsTo('App\Author');
 	}
 
-	public function convertStatus($status = null)
+	public function getStatusAttribute($status = null)
 	{
 		$status = $status ? $status : $this->status;
 		switch ($status) {

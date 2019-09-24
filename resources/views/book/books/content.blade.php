@@ -33,7 +33,7 @@
                 <? printf('<a href="/book/%s">%s</a>', $book->id, $book->title); ?>
               </td>
               <td>{{ $book->id_author }}</td>
-              <td>{{ $book->convertState() }}</td>
+              <td>{{ $book->status }}</td>
               <td>{{ $book->rating }}</td>
             </tr>
         @empty
