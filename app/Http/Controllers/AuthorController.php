@@ -25,4 +25,10 @@ class AuthorController extends Controller
         if (false) return redirect()->route('authors')->with('message', 'success');
         return redirect()->back()->with('message', 'error');
     }
+
+    public function add(Request $request)
+    {
+        if ($request->isMethod('get')) return view('author.add.base');
+        dd($request->all());
+    }
 }

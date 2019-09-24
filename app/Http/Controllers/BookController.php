@@ -27,4 +27,10 @@ class BookController extends Controller
         // dd($book->convertStatus());
     	return view('book.index.base', compact('book'));
     }
+
+    public function add(Request $request)
+    {
+        if ($request->isMethod('get')) return view('book.add.base');
+        dd($request->all());
+    }
 }
