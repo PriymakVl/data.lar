@@ -19,4 +19,10 @@ class BookController extends Controller
     	$book = Book::find($id);
     	return view('book.index.base', compact('book'));
     }
+
+    public function add(Request $request)
+    {
+        if ($request->isMethod('get')) return view('book.add.base');
+        dd($request->all());
+    }
 }
