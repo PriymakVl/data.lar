@@ -9,7 +9,6 @@ class AuthorController extends Controller
 {
     public function authors()
     {
-        dump(session('message'));
     	$authors = Author::orderBy('last_name', 'desc')->paginate(5);
     	return view('author.authors.base', compact('authors'));
     }
@@ -22,17 +21,15 @@ class AuthorController extends Controller
 
     public function delete($id)
     {
-        // Author::destroy($id)
-        if (false) return redirect()->route('authors')->with('message', 'success');
-        return redirect()->back()->with('message', 'error');
+        if (Author::destroy($id)) return redirect('authors')->with('success', 'Автор успешно удален');
+        return redirect()->back()->with('error', 'Ошибка при удалении автора');
     }
 
     public function add(Request $request)
     {
         if ($request->isMethod('get')) return view('author.add.base');
-        // $author = Author::create($request->all());
-        // if ($author) return redirect()->route('author', ['id' => $author->id]);//->with('message', 'success');
-        // else redirect()->route('authors');//->with('message', 'error');
-        return redirect('/authors')->with('message', 'error');
+        $author = Author::create($request->all());
+        if ($author) return redirect()->route('author', ['id' => $author->id])->with('success', 'Автор успешно добавлен');
+        return redirect('authors')->with('error', 'Ошибка при добавлении автора');
     }
 }
