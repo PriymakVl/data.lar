@@ -22,4 +22,7 @@ Route::match(['get', 'post'], '/author/add', ['as' => 'author_add', 'uses' => 'A
 Route::get('/author/delete/{id}', ['as' => 'author_delete', 'uses' => 'AuthorController@delete']);
 Route::get('/author/{id}', ['as' => 'author', 'uses' => 'AuthorController@index']);
 
+Route::get('/quotes', ['as' => 'quotes', 'uses' => 'QuoteController@quotes']);
+Route::get('/quote/{id}', ['as' => 'quote', 'uses' => 'QuoteController@index']);
+
 
