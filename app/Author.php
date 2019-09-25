@@ -10,6 +10,7 @@ class Author extends Model
 	use SoftDeletes;
 
     protected $table = 'authors';
+    protected $fillable = ['first_name', 'last_name', 'middle_name', 'date_birth'];
 
     public function books()
     {

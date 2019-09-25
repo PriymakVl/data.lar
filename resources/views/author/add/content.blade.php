@@ -4,6 +4,7 @@
   	</div>
     
     <form action="/author/add" method="post">
+    	{{ csrf_field() }}
         <!-- author --> 
         <div class="form-group">
 			<label>Имя:</label>

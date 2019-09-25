@@ -9,6 +9,7 @@ class AuthorController extends Controller
 {
     public function authors()
     {
+        dump(session('message'));
     	$authors = Author::orderBy('last_name', 'desc')->paginate(5);
     	return view('author.authors.base', compact('authors'));
     }
@@ -29,6 +30,9 @@ class AuthorController extends Controller
     public function add(Request $request)
     {
         if ($request->isMethod('get')) return view('author.add.base');
-        dd($request->all());
+        // $author = Author::create($request->all());
+        // if ($author) return redirect()->route('author', ['id' => $author->id]);//->with('message', 'success');
+        // else redirect()->route('authors');//->with('message', 'error');
+        return redirect('/authors')->with('message', 'error');
     }
 }
