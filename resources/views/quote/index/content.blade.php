@@ -1,6 +1,6 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
-    <h1 class="h2">Информация о книге</h1>
+    <h1 class="h2">Информация о цитате</h1>
   </div>
 
 	<div class="table-responsive">
@@ -24,13 +24,15 @@
 				<tr>
 					<td>2</td>
 					<td>Теги</td>
-					<td class="left"><?//=$book->category ? $book->category->name : '<span class="red">нет</span>'?></td>
+					<td class="text-left">
+						<span>нет</span>
+					</td>
 				</tr>
 				<!-- rating -->
 				<tr>
 					<td>3</td>
 					<td>Рейтинг</td>
-					<td class="left">{{ $book->rating ? $book->rating : 0 }}</td>
+					<td>{{ $quote->rating ? $quote->rating : 0 }}</td>
 				</tr>
 				<!-- author -->
 				<tr>

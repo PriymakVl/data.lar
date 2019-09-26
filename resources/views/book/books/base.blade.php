@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('sidebar')
-	@include('layouts.sidebar')
+	@parent
 	@include('book.books.sidebar')
 @endsection
 

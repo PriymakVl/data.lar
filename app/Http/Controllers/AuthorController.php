@@ -28,6 +28,7 @@ class AuthorController extends Controller
     public function add(Request $request)
     {
         if ($request->isMethod('get')) return view('author.add.base');
+        // $request->validate(['first_name' => 'max:100', 'last_name' =>'required|max:100']);
         $author = Author::create($request->all());
         if ($author) return redirect()->route('author', ['id' => $author->id])->with('success', 'Автор успешно добавлен');
         return redirect('authors')->with('error', 'Ошибка при добавлении автора');

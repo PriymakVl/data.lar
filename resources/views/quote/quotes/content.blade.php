@@ -15,9 +15,9 @@
 
  <!-- table quotes -->
   <div class="table-responsive">
-    <table class="table table-bordered text-center">
+    <table class="table table-bordered">
         <!-- thead -->
-        <thead class="bg-light">
+        <thead class="bg-light text-center">
             <tr>
                 <th width="40">#</th>
                 <th>Текст</th>
@@ -25,27 +25,26 @@
             </tr>
         </thead>
         <!-- tbody -->
-            <tbody class="table-striped">
-            @forelse ($quotes as $quote): ?>
-              <tr>
-                  <td class="text-center">{{ $loop->index + 1 }}</td>
-                  <td>
-                      <? printf('<a href="/quote/%s">%s</a>', $quote->id, $quote->text); ?>
-                  </td>
-                  <td class="text-center">
-                      <a href="#rating-edit" data-toggle="modal" id_quote="{{ $quote->id }}">{{ $quote->rating ? $quote->rating : 0 }}</a>
-                  </td>
-              </tr>
-            @empty
-              <tr>
-                <td colspan="3" class="text-center color-danger">Цитат еще нет</td>
-              </tr>
-            @endforelse
-            </tbody>
-        <? endif; ?>
+        <tbody class="table-striped">
+        @forelse ($quotes as $quote)
+          <tr>
+              <td class="text-center">{{ $loop->index + 1 }}</td>
+              <td>
+                  <? printf('<a href="/quote/%s">%s</a>', $quote->id, $quote->text); ?>
+              </td>
+              <td class="text-center">
+                  <a href="#rating-edit" data-toggle="modal" id_quote="{{ $quote->id }}">{{ $quote->rating ? $quote->rating : 0 }}</a>
+              </td>
+          </tr>
+        @empty
+          <tr>
+            <td colspan="3" class="text-center color-danger">Цитат еще нет</td>
+          </tr>
+        @endforelse
+        </tbody>
     </table>
   </div>
   <br>
-  {{ $books->links() }}
+  {{ $quotes->links() }}
   </div>
 </main>

@@ -43,7 +43,9 @@
 	  	<!--  sidebar -->
       <nav class="col-md-2 d-none d-md-block bg-light sidebar">
         <div class="sidebar-sticky">
-	       @yield('sidebar')
+	       @section('sidebar')
+            @include('layouts.sidebar')
+          @show
         </div>
       </nav>
 
