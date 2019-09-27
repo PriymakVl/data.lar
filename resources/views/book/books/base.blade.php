@@ -8,3 +8,8 @@
 @section('content')
 	@include('book.books.content')
 @endsection
+
+@section('rating-form')
+  @include('layouts.rating_form')
+@show
+

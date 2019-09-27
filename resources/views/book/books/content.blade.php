@@ -34,7 +34,9 @@
               </td>
               <td>{{ $book->id_author }}</td>
               <td>{{ $book->status }}</td>
-              <td>{{ $book->rating }}</td>
+              <td>
+                <a href="#rating-edit" data-toggle="modal" id_quote=" {{ $book->id }}"> {{ $book->rating }}</a>
+              </td>
             </tr>
         @empty
           <tr>

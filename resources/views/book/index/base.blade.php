@@ -8,3 +8,11 @@
 @section('content')
 	@include('book.index.content')
 @endsection
+
+
+<?php
+                    $routeName = $request->route()->getName();
+
+    dd($routeName);
+
+ ?>
