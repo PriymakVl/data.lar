@@ -32,7 +32,7 @@
 				<tr>
 					<td>3</td>
 					<td>Рейтинг</td>
-					<td>{{ $quote->rating ? $quote->rating : 0 }}</td>
+					<td class="text-left">{{ $quote->rating ? $quote->rating : 0 }}</td>
 				</tr>
 				<!-- author -->
 				<tr>
@@ -40,7 +40,7 @@
 					<td>Автор</td>
 					<td class="text-left">
 						@if($quote->author)
-							<a href="/author/{{ $book->author->id }}">{{ $book->author->full_name }}</a>
+							<a href="/author/{{ $quote->author->id }}">{{ $quote->author->full_name }}</a>
 						@else
 							<span>нет</span>
 						@endif	
@@ -50,7 +50,13 @@
 				<tr>
 					<td>5</td>
 					<td>Источник</td>
-					<td class="left">{{ $quote->book }}</td>
+					<td class="text-left">
+						@if ($quote->book)
+							<a href="/book/{{ $quote->book->id }}">{{ $quote->book->title }}</a>
+						@else
+							<span>нет</span>
+						@endif
+					</td>
 				</tr>
 		    </tbody>
 		</table>

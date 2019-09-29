@@ -4,13 +4,13 @@
 
 <ul class="nav flex-column mb-2">
   <li class="nav-item">
-    <a class="nav-link" href="/book/add">
+    <a class="nav-link" href="/author/add">
       <span data-feather="plus-square"></span>
       Добавить автора
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="/author/edit/{{ $author->id }}">
       <span data-feather="edit"></span>
       Редактировать автора
     </a>

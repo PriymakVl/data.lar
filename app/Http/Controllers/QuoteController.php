@@ -23,6 +23,22 @@ class QuoteController extends Controller
     public function add(Request $request)
     {
         if ($request->isMethod('get')) return view('quote.add.base');
-  //       dd($request->all());
+        $quote = Quote::create($request->all());
+        if ($quote) return redirect()->route('quote', ['id' => $quote->id])->with('success', 'Цитата успешно добавлен');
+        return redirect('quotes')->with('error', 'Ошибка при добавлении цитата');
+    }
+
+    public function show($id)
+    {
+        $quote = Quote::find($id);
+        return view('quote.edit.base', compact('quote'));
+    }
+
+     public function edit(Request $request)
+    {
+        $result = DB::table('quotes')->where('id', $request->post('id'))->update($request->all());
+        dd($result);
+        // if ($quote) return redirect()->route('quote', ['id' => $quote->id])->with('success', 'Цитата успешно отредактирована');
+        // return redirect('quotes')->with('error', 'Ошибка при редакт');
     }
 }

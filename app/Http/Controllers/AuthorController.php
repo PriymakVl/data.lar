@@ -33,4 +33,17 @@ class AuthorController extends Controller
         if ($author) return redirect()->route('author', ['id' => $author->id])->with('success', 'Автор успешно добавлен');
         return redirect('authors')->with('error', 'Ошибка при добавлении автора');
     }
+
+    public function edit(Request $request)
+    {
+        $author = Author::find($request->id);
+        if ($request->isMethod('post')) return $this->update($request, $author);
+        return view('author.edit.base', compact('author'));
+    }
+
+    private function update($request, $author)
+    {
+        $author->update($request->all());
+        return redirect()->route('author', ['id' => $author->id])->with('success', 'Автор успешно отредактирован');
+    }
 }

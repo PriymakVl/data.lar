@@ -6,7 +6,7 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/quote/edit">
+    <a class="nav-link" href="/quote/edit/{{ $quote->id }}">
       <span data-feather="edit"></span>
       Редактировать цитату
     </a>
