@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Route;
 use App\Author;
 
 class AuthorController extends Controller
@@ -45,5 +46,14 @@ class AuthorController extends Controller
     {
         $author->update($request->all());
         return redirect()->route('author', ['id' => $author->id])->with('success', 'Автор успешно отредактирован');
+    }
+
+    public function search()
+    {
+        $search = $request->input('search');
+        $authors = Authors::where('last_name', 'like', '%{$search}%')->get();
+        if (!$authors) return redirect()->back()->with('error', 'Автор не найден')
+        else if (count($authors) == 1) return redirect()->route('author', ['id' => $authors[0]->id])->with('success', 'Автор успeшно найден');
+        return view('author.search.base')->with('success', 'Найдено несколько авторов');
     }
 }
