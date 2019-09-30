@@ -48,12 +48,12 @@ class AuthorController extends Controller
         return redirect()->route('author', ['id' => $author->id])->with('success', 'Автор успешно отредактирован');
     }
 
-    public function search()
+    public function search(Request $request)
     {
         $search = $request->input('search');
-        $authors = Authors::where('last_name', 'like', '%{$search}%')->get();
-        if (!$authors) return redirect()->back()->with('error', 'Автор не найден')
+        $authors = Author::where('last_name', 'like', "%{$search}%")->get();
+        if (!$authors) return redirect()->back()->with('error', 'Автор не найден');
         else if (count($authors) == 1) return redirect()->route('author', ['id' => $authors[0]->id])->with('success', 'Автор успeшно найден');
-        return view('author.search.base')->with('success', 'Найдено несколько авторов');
+        return view('author.search.base', compact('authors'))->with('success', 'Найдено несколько авторов');
     }
 }

@@ -21,7 +21,7 @@ Route::get('/authors', ['as' => 'authors', 'uses' => 'AuthorController@authors']
 Route::match(['get', 'post'], '/author/add', ['as' => 'author_add', 'uses' => 'AuthorController@add']);
 Route::get('/author/delete/{id}', ['as' => 'author_delete', 'uses' => 'AuthorController@delete']);
 Route::match(['get', 'post'], '/author/edit/{id?}', ['as' => 'author_edit', 'uses' => 'AuthorController@edit']);
-Route::post('/author/search', 'Author/Controller/@search');
+Route::get('/author/search', ['as' => 'author_search', 'uses' => 'AuthorController@search']);
 Route::get('/author/{id}', ['as' => 'author', 'uses' => 'AuthorController@index']);
 
 Route::get('/quotes', ['as' => 'quotes', 'uses' => 'QuoteController@quotes']);
