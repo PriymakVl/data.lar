@@ -11,7 +11,7 @@ class BookController extends Controller
     public function books()
     {
     	$books = Book::orderBy('rating', 'desc')->paginate(5);
-        $class_name = 'Book'; //for rating form
+        $class_name = 'book'; //for rating form
     	return view('book.books.base', compact('books', 'class_name'));
     }
 

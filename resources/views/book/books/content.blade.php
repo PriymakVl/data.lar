@@ -35,7 +35,7 @@
               <td>{{ $book->id_author }}</td>
               <td>{{ $book->status }}</td>
               <td>
-                <a href="#rating-edit" data-toggle="modal" id_quote=" {{ $book->id }}"> {{ $book->rating }}</a>
+                <a href="#rating-edit" data-toggle="modal" id_item=" {{ $book->id }}"> {{ $book->rating }}</a>
               </td>
             </tr>
         @empty
@@ -46,6 +46,7 @@
       </tbody>
     </table>
     <br>
-    {{ $books->links() }}
+    <!-- pagination -->
+    {{ $books->links('vendor/pagination/bootstrap-4') }}
   </div>
 </main>

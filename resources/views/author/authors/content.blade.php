@@ -45,6 +45,6 @@
       </tbody>
     </table>
     <br>
-    {{ $authors->links() }}
+    {{ $authors->links('vendor/pagination/bootstrap-4') }}
   </div>
 </main>
