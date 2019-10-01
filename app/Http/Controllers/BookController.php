@@ -29,6 +29,7 @@ class BookController extends Controller
 
     public function editRating(Request $request)
     {
+        dd($request->input('rating'));
         // $book = Book::find($request->input('id_item'));
         // (new Book)->setData($this->get->id_book)->setRating($this->get->rating)->setMessage('success', 'edit_rating');
         // $this->redirectPrevious();

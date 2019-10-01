@@ -11,5 +11,5 @@
 
 @section('rating-form')
   @include('layouts.rating_form')
-@show
+@endsection
 
