@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-	@include('author.add.content')
+	@include('book.add.content')
 @endsection

@@ -48,7 +48,7 @@
 				<tr>
 					<td>5</td>
 					<td>Состояние</td>
-					<td class="left">{{ $book->status }}</td>
+					<td class="left">{{ Book::convertStatus($book->status) }}</td>
 				</tr>
 				<!-- book file -->
 				<tr>

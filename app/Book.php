@@ -10,14 +10,14 @@ class Book extends Model
 {
 	use SoftDeletes;
 	
-	const STATUS_NOT_READ = 0;
-	const STATUS_SPEED_READ = 1;
-	const STATUS_READ = 2;
-	const STATUS_AUDIO = 3;
-	const STATUS_OUTLINED = 4; //законспектирована
+	const STATUS_NOT_READ = 1;
+	const STATUS_SPEED_READ = 2;
+	const STATUS_READ = 3;
+	const STATUS_AUDIO = 4;
+	const STATUS_OUTLINED = 5; //законспектирована
 	
     protected $table = 'books';
-    protected $fillable = ['title', 'rating', 'user_id'];
+    protected $fillable = ['title', 'rating', 'user_id', 'status'];
 
 
     public function author()
@@ -25,9 +25,8 @@ class Book extends Model
 		return $this->belongsTo('App\Author');
 	}
 
-	public function getStatusAttribute($status = null)
+	public static function convertStatus($status)
 	{
-		$status = $status ? $status : $this->status;
 		switch ($status) {
 			case self::STATUS_NOT_READ: return 'не прочитана';
 			case self::STATUS_SPEED_READ: return 'просмотрена';

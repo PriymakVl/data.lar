@@ -1,8 +1,4 @@
-<h6 class="sidebar-heading text-center mt-3 mb-0 text-muted">
-    Меню книги
-</h6>
-
-<ul class="nav flex-column mb-2">
+<ul class="nav flex-column mb-2 mt-2 border-top">
   <li class="nav-item">
     <a class="nav-link" href="/book/add">
       <span data-feather="plus-square"></span>
@@ -10,19 +6,19 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="/book/edit/{{ $book->id }}">
       <span data-feather="edit"></span>
       Редактировать книгу
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="/book/delete/{{ $book->id }}">
       <span data-feather="trash"></span>
       Удалить книгу
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="/book/upload-file/{{ $book->id }}">
       <span data-feather="download"></span>
       Загрузить файл
     </a>

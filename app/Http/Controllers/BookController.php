@@ -11,8 +11,7 @@ class BookController extends Controller
     public function books()
     {
     	$books = Book::orderBy('rating', 'desc')->paginate(5);
-        $class_name = 'book'; //for rating form
-    	return view('book.books.base', compact('books', 'class_name'));
+    	return view('book.books.base', compact('books'));
     }
 
     public function index(Request $request, $id)
@@ -24,12 +23,16 @@ class BookController extends Controller
     public function add(Request $request)
     {
         if ($request->isMethod('get')) return view('book.add.base');
-        dd($request->all());
+        $request->validate(['title' => 'string|max:255']);
+        $book = Book::create($request->all());
+        if ($book) return redirect()->route('book', ['id' => $book->id])->with('success', 'Книга успешно добавлена');
+        return redirect('books')->with('error', 'Ошибка при добавлении книги');
     }
 
     public function rating(Request $request)
     {
+        $this->validate($request, ['rating' => 'integer']);
         Book::where('id', $request->input('id_item'))->update(['rating' => $request->input('rating')]);
-        return redirect()->back()->with('success', 'Рейтинг книги изменен');
+        return redirect()->back()->with('success', 'Рейтинг книги успешно изменен');
     }
 }
