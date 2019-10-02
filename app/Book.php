@@ -17,6 +17,7 @@ class Book extends Model
 	const STATUS_OUTLINED = 4; //законспектирована
 	
     protected $table = 'books';
+    protected $fillable = ['title', 'rating', 'user_id'];
 
 
     public function author()

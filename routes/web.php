@@ -14,6 +14,7 @@
 Route::get('/', ['as' => 'home', 'uses' => 'MainController@index']);
 
 Route::get('/books', ['as' => 'books', 'uses' => 'BookController@books']);
+Route::any('/book/rating', 'BookController@rating');
 Route::match(['get', 'post'], '/book/add', ['as' => 'book_add', 'uses' => 'BookController@add']);
 Route::get('/book/{id}', ['as' => 'book', 'uses' => 'BookController@index']);
 

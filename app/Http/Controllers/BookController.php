@@ -27,11 +27,9 @@ class BookController extends Controller
         dd($request->all());
     }
 
-    public function editRating(Request $request)
+    public function rating(Request $request)
     {
-        dd($request->input('rating'));
-        // $book = Book::find($request->input('id_item'));
-        // (new Book)->setData($this->get->id_book)->setRating($this->get->rating)->setMessage('success', 'edit_rating');
-        // $this->redirectPrevious();
+        Book::where('id', $request->input('id_item'))->update(['rating' => $request->input('rating')]);
+        return redirect()->back()->with('success', 'Рейтинг книги изменен');
     }
 }

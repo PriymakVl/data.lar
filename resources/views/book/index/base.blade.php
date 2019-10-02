@@ -1,5 +1,7 @@
 @extends('layouts.main')
 
+@section('title', 'Книга')
+
 @section('sidebar')
 	@parent
 	@include('book.index.sidebar')

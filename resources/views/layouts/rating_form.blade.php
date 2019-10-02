@@ -14,7 +14,7 @@
          <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
     
-   <form action="/{{ $path }}/edit_rating?>">
+   <form action="/{{ $path }}/rating?>">
       {{ csrf_field() }} 
       <!-- Modal body -->
       <div class="modal-body">
