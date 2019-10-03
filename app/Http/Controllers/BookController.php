@@ -29,10 +29,34 @@ class BookController extends Controller
         return redirect('books')->with('error', 'Ошибка при добавлении книги');
     }
 
+    public function edit(Request $request)
+    {
+        $book = Book::find($request->id);
+        if ($request->isMethod('post')) return $this->update($request, $book);
+        return view('book.edit.base', compact('book'));
+    }
+
+    private function update($request, $author)
+    {
+        $book->update($request->all());
+        return redirect()->route('book', ['id' => $book->id])->with('success', 'Книга успешно отредактирована');
+    }
+
+    public function delete($id)
+    {
+        if (Book::destroy($id)) return redirect('books')->with('success', 'Книга успешно удалена');
+        return redirect()->back()->with('error', 'Ошибка при удалении книги');
+    }
+
     public function rating(Request $request)
     {
         $this->validate($request, ['rating' => 'integer']);
         Book::where('id', $request->input('id_item'))->update(['rating' => $request->input('rating')]);
         return redirect()->back()->with('success', 'Рейтинг книги успешно изменен');
+    }
+
+    public function uploadfile()
+    {
+        dd('upload');
     }
 }
