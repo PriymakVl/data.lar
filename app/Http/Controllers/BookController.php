@@ -36,7 +36,7 @@ class BookController extends Controller
         return view('book.edit.base', compact('book'));
     }
 
-    private function update($request, $author)
+    private function update($request, $book)
     {
         $book->update($request->all());
         return redirect()->route('book', ['id' => $book->id])->with('success', 'Книга успешно отредактирована');

@@ -2,6 +2,10 @@
 	use app\Book;
 ?>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+	<!-- messages -->
+	@include('layouts.messages')
+
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
     <h1 class="h2">Информация о книге</h1>
   </div>
@@ -16,30 +20,27 @@
 					<th>Значение</th>
 		        </tr>
 		    </thead>
-		    <!-- tbody -->
-		    <tbody class="table-striped">
+		    
+		    <tbody class="table-striped text-left">
+		    	<!-- title -->
 		        <tr>
 					<td>1</td>
 					<td>Наименование</td>
-					<td class="text-left">{{ $book->title }}</td>
+					<td>{{ $book->title }}</td>
 				</tr>
-				<!-- category -->
-				<tr>
-					<td>2</td>
-					<td>Категория</td>
-					<td class="left"><?//=$book->category ? $book->category->name : '<span class="red">нет</span>'?></td>
-				</tr>
+
 				<!-- rating -->
 				<tr>
-					<td>3</td>
+					<td>2</td>
 					<td>Рейтинг</td>
-					<td class="left">{{ $book->rating ? $book->rating : '<span class="red">нет</span>' }}</td>
+					<td>{{ $book->rating ? $book->rating : '<span class="red">нет</span>' }}</td>
 				</tr>
+
 				<!-- author -->
 				<tr>
-					<td>4</td>
+					<td>3</td>
 					<td>Автор</td>
-					<td class="text-left">
+					<td>
 						@if($book->author)
 							<a href="/author/{{ $book->author->id }}">{{ $book->author->full_name }}</a>
 						@else
@@ -47,15 +48,17 @@
 						@endif	
 					</td>
 				</tr>
+
 				<!-- state book -->
 				<tr>
-					<td>5</td>
+					<td>4</td>
 					<td>Состояние</td>
-					<td class="left">{{ Book::convertStatus($book->status) }}</td>
+					<td>{{ Book::convertStatus($book->status) }}</td>
 				</tr>
+
 				<!-- book file -->
 				<tr>
-					<td>6</td>
+					<td>5</td>
 					<td>Файл</td>
 					<td> 
 						@if ($book->filename)
@@ -65,9 +68,10 @@
 						@endif
 					</td>
 				</tr>
+
 				<!-- book description -->
 				<tr>
-					<td>7</td>
+					<td>6</td>
 					<td>Описание книги</td>
 					<td class="text-left">{{ $book->description ? $book->description : '' }}</td>
 				</tr>

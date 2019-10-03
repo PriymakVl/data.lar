@@ -12,6 +12,8 @@
   	</div>
     
     <form action="/book/edit" method="post">
+		<!-- verify token -->
+		{{ csrf_field() }}
 
 		<!-- authors -->
         <div class="form-group">
@@ -53,8 +55,11 @@
 		<!-- rating book -->
 		<div class="form-group">
 			<label>Рейтинг книги:</label>
-			<input class="form-control" type="text" name="rating">
+			<input class="form-control" type="text" name="rating" value="{{ $book->rating }}">
 		</div>
+
+		<!-- id author -->
+		<input type="hidden" name="id" value="{{ $book->id }}">
 
         <!-- buttons -->
         <div class="form-group">

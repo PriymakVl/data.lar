@@ -1,4 +1,8 @@
+<?php
+  use app\Book;
+?>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  
   <!-- messages -->
   @include('layouts.messages')
 
@@ -36,7 +40,7 @@
                 <? printf('<a href="/book/%s">%s</a>', $book->id, $book->title); ?>
               </td>
               <td>{{ $book->id_author }}</td>
-              <td>{{ $book->status }}</td>
+              <td>{{ Book::convertStatus($book->status) }}</td>
               <td>
                 <a href="#rating-edit" data-toggle="modal" id_item=" {{ $book->id }}"> {{ $book->rating }}</a>
               </td>

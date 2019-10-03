@@ -12,6 +12,8 @@
   	</div>
     
     <form action="/book/add" method="post">
+    	<!-- verify token -->
+		{{ csrf_field() }}
 
 		<!-- authors -->
         <div class="form-group">

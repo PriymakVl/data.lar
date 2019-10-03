@@ -1,10 +1,11 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-  @include('layouts.messages')
+	<!-- messages -->
+  	@include('layouts.messages')
   
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
-    <h1 class="h2">Информация о авторе</h1>
-  </div>
+	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
+	    <h1 class="h2">Информация о авторе</h1>
+	</div>
 
 	<div class="table-responsive">
 		<table class="table table-bordered text-center">
