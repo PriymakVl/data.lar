@@ -1,4 +1,8 @@
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+  <!-- messages -->
+  @include('layouts.messages')
+  
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
     <h1 class="h2">Цитаты</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
@@ -33,7 +37,7 @@
                   <? printf('<a href="/quote/%s">%s</a>', $quote->id, $quote->text); ?>
               </td>
               <td class="text-center">
-                  <a href="#rating-edit" data-toggle="modal" id_quote="{{ $quote->id }}">{{ $quote->rating ? $quote->rating : 0 }}</a>
+                  <a href="#rating-edit" data-toggle="modal" id_item="{{ $quote->id }}">{{ $quote->rating ? $quote->rating : 0 }}</a>
               </td>
           </tr>
         @empty
@@ -45,6 +49,7 @@
     </table>
   </div>
   <br>
-  {{ $quotes->links() }}
+  <!-- pagination -->
+    {{ $quotes->links('vendor/pagination/bootstrap-4') }}
   </div>
 </main>

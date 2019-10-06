@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Author;
+use App\File;
 
 class Book extends Model
 {
@@ -35,5 +36,11 @@ class Book extends Model
 			case self::STATUS_OUTLINED: return 'законспектирована';
 			default: return 'не известно';
 		}
+	}
+
+	public function uploadFile($file)
+	{
+		$this->filename = File::upload($file, 'files/books');
+		if ($this->filename) return $this->save();
 	}
 }

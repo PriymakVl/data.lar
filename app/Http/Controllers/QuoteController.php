@@ -28,17 +28,42 @@ class QuoteController extends Controller
         return redirect('quotes')->with('error', 'Ошибка при добавлении цитата');
     }
 
-    public function show($id)
+    public function edit(Request $request)
     {
-        $quote = Quote::find($id);
+        $quote = Quote::find($request->id);
+        if ($request->isMethod('post')) return $this->update($request, $quote);
         return view('quote.edit.base', compact('quote'));
     }
 
-     public function edit(Request $request)
+    private  function update($request, $quote)
     {
-        $result = DB::table('quotes')->where('id', $request->post('id'))->update($request->all());
-        dd($result);
-        // if ($quote) return redirect()->route('quote', ['id' => $quote->id])->with('success', 'Цитата успешно отредактирована');
-        // return redirect('quotes')->with('error', 'Ошибка при редакт');
+        $quote->update($request->all());
+        return redirect()->route('quote', ['id' => $quote->id])->with('success', 'Цитата  успешно отредактирована');
+    }
+
+    public function delete($id)
+    {
+        if (Quote::destroy($id)) return redirect('quotes')->with('success', 'Цитата успешно удалена');
+        return redirect()->back()->with('error', 'Ошибка при удалении цитаты');
+    }
+
+    public function rating(Request $request)
+    {
+        $this->validate($request, ['rating' => 'integer']);
+        Quote::where('id', $request->input('id_item'))->update(['rating' => $request->input('rating')]);
+        return redirect()->back()->with('success', 'Рейтинг цитаты успешно изменен');
+    }
+
+    public function file(Request $request)
+    {
+        if($request->isMethod('post')) return $this->uploadFile($request);
+        return view('quote.file.base');
+    }
+
+    private function uploadFile($request)
+    {
+        if(!$request->hasFile('quotes')) return redirect()->back()->with('error', 'Ошибка при загрузке файла с цитатами');
+        Quote::addQuotesFromFile($request->file('quotes'));
+        return redirect()->route('book', ['id' => $id])->with('success', 'Файл книги успешно загружен');
     }
 }

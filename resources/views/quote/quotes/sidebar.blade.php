@@ -5,4 +5,10 @@
       Добавить цитату 
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/quote/file">
+      <span data-feather="download"></span>
+      Загрузить файл с цитатами
+    </a>
+  </li>
 </ul>

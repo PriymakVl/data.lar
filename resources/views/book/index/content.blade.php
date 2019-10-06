@@ -62,7 +62,7 @@
 					<td>Файл</td>
 					<td> 
 						@if ($book->filename)
-							<a href="/web/books/{{ $book->filename }}">Скачать</a>
+							<a href="/public/files/{{ $book->filename }}">Скачать</a>
 						@else
 							<span class="text-danger" >нет</span>
 						@endif

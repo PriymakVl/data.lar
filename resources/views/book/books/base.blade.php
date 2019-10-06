@@ -11,6 +11,7 @@
 	@include('book.books.content')
 @endsection
 
+<!-- include js file -->
 @section('rating-form')
 	@include('layouts.rating_form')
 @endsection

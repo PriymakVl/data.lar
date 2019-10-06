@@ -55,8 +55,18 @@ class BookController extends Controller
         return redirect()->back()->with('success', 'Рейтинг книги успешно изменен');
     }
 
-    public function uploadfile()
+    public function file(Request $request)
     {
-        dd('upload');
+        $id = $request->id;
+        if($request->isMethod('post')) return $this->uploadFile($request, $id);
+        return view('book.file.base', compact('id'));
+    }
+
+    private function uploadFile($request, $id)
+    {
+        if(!$request->hasFile('book')) return redirect()->route('book', ['id' => $id])->with('error', 'Ошибка при загрузке файла книги');
+        $book = Book::find($id);
+        $book->uploadFile($request->file('book'));
+        return redirect()->route('book', ['id' => $id])->with('success', 'Файл книги успешно загружен');
     }
 }

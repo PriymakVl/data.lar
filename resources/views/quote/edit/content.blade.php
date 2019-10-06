@@ -3,7 +3,6 @@
 	$books = DB::table('books')->orderBy('title')->get();
 	$author_id = $quote->author ? $quote->author->id : null;
 	$book_id = $quote->book ? $quote->book->id : null;
-	dd($book_id);
 ?>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
@@ -12,6 +11,7 @@
     
     <form action="/quote/edit" method="post">
     	{{ csrf_field() }}
+
 		<!-- authors -->
         <div class="form-group">
 			<label>Авторы:</label>

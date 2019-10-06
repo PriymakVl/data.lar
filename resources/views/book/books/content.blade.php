@@ -42,7 +42,7 @@
               <td>{{ $book->id_author }}</td>
               <td>{{ Book::convertStatus($book->status) }}</td>
               <td>
-                <a href="#rating-edit" data-toggle="modal" id_item=" {{ $book->id }}"> {{ $book->rating }}</a>
+                <a href="#rating-edit" data-toggle="modal" id_item="{{ $book->id }}"> {{ $book->rating }}</a>
               </td>
             </tr>
         @empty

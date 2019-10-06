@@ -18,7 +18,7 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/book/upload-file/{{ $book->id }}">
+    <a class="nav-link" href="/book/file/{{ $book->id }}">
       <span data-feather="download"></span>
       Загрузить файл
     </a>
