@@ -62,8 +62,11 @@ class QuoteController extends Controller
 
     private function uploadFile($request)
     {
+        dd($request);
         if(!$request->hasFile('quotes')) return redirect()->back()->with('error', 'Ошибка при загрузке файла с цитатами');
-        Quote::addQuotesFromFile($request->file('quotes'));
-        return redirect()->route('book', ['id' => $id])->with('success', 'Файл книги успешно загружен');
+        $count = Quote::addQuotesFromFile($request);
+        debug($count);
+        $messages = "Загружено {$count} цитаты";
+        return redirect()->route('quotes')->with('success', $messages);
     }
 }

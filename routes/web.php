@@ -39,4 +39,6 @@ Route::any('/quote/rating', 'QuoteController@rating');
 Route::match(['get', 'post'], '/quote/file/{id?}', ['as' => 'quote_file', 'uses' => 'QuoteController@file']);
 Route::get('/quote/{id}', ['as' => 'quote', 'uses' => 'QuoteController@index']);
 
+//tag
+Route::get('/tags/categories', 'TagController@categories');
 

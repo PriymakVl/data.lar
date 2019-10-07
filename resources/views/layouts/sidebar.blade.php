@@ -19,7 +19,7 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/tags">
+    <a class="nav-link" href="/tags/categories">
       <span data-feather="bookmark"></span>
       Теги
     </a>
