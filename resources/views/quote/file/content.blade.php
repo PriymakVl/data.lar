@@ -7,7 +7,7 @@
     	<h1 class="h2">Форма для добавления файла с цитатами</h1>
   	</div>
     
-    <form action="/quote/add" method="post">
+    <form action="/quote/file" method="post" enctype="multipart/form-data">
     	{{ csrf_field() }}
 		<!-- authors -->
         <div class="form-group">

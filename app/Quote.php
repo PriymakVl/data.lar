@@ -22,15 +22,15 @@ class Quote extends Model
     	return $this->belongsTo('App\Author');
     }
 
-    public function addQuotesFromFile($request)
+    public static function addQuotesFromFile($request)
     {
-        $items = file($_FILES['file']['tmp_name']);
+        $items = file($_FILES['quotes']['tmp_name']);
         if (!$items) return;
-        $quotes = $this->setCharset($items);
-        return $this->addQuotes($quotes, $request);
+        $quotes = self::setCharset($items);
+        return self::addQuotes($quotes, $request);
     }
     
-    private function setCharset($items)
+    private static function setCharset($items)
     {
         foreach ($items as $item) {
             $quotes[] = mb_convert_encoding($item, "UTF-8", "CP1251");
@@ -38,14 +38,15 @@ class Quote extends Model
         return $quotes;
     }
     
-    private function addQuotes($quotes, $request)
+    private static function addQuotes($quotes, $request)
     {
-        $conter = 0;
+        $counter = 0;
         foreach ($quotes as $quote) {
-            if(Qoute::where('text', $quote)) continue;
+            $quote = str_replace(["\r\n", "\r", "\n"], '',  $quote);
+            if(self::where('text', $quote)->first()) continue;
             $counter++;
-            $params = ['author' => $request->author, 'book' => $request->book, 'text' => $quote];
-            Quote::create($params);
+            $params = ['author_id' => $request->author_id, 'book_id' => $request->book_id, 'text' => $quote, 'rating' => 0];
+            self::create($params);
         }
         return $counter;
     }
