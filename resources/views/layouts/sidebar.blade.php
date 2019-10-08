@@ -19,9 +19,9 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/tags/categories">
+    <a class="nav-link" href="/categories">
       <span data-feather="bookmark"></span>
-      Теги
+      Категории
     </a>
   </li>
 </ul>

@@ -40,5 +40,7 @@ Route::match(['get', 'post'], '/quote/file/{id?}', ['as' => 'quote_file', 'uses'
 Route::get('/quote/{id}', ['as' => 'quote', 'uses' => 'QuoteController@index']);
 
 //tag
-Route::get('/tags/categories', 'TagController@categories');
+
+//category
+Route::get('/categories', ['as' => 'cats', 'uses' => 'CategoryController@categories']);
 
