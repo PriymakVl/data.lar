@@ -3,15 +3,18 @@
     	<h1 class="h2">Форма для добавления категории</h1>
   	</div>
     
-    <form action="/category/add" method="post">
+    <form action="/category/edit" method="post">
 
     	{{ csrf_field() }}
 
 		<!-- name category -->
 		<div class="form-group">
 			<label>Название категории:</label>
-			<input type="text" class="form-control" name="name">
+			<input type="text" class="form-control" name="name" value="{{ $cat->name }}">
 		</div>
+
+        <!-- id category -->
+        <input type="hidden" name="id" value="{{ $cat->id }}">
 		
         <!-- buttons -->
         <div class="button-group">

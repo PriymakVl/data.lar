@@ -4,7 +4,7 @@
   	@include('layouts.messages')
   
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
-	    <h1 class="h2">Информация о категории</h1>
+	    <h1 class="h2">Информация о авторе</h1>
 	</div>
 
 	<div class="table-responsive">
@@ -17,30 +17,28 @@
 					<th>Значение</th>
 		        </tr>
 		    </thead>
-		    
 		    <!-- tbody -->
 		    <tbody class="table-striped">
 		        <tr>
 					<td>1</td>
-					<td>Название</td>
-					<td class="text-left">{{ $cat->name }}</td>
+					<td>ФИО</td>
+					<td class="text-left">{{ $author->full_name }}</td>
 				</tr>
 				<tr>
 					<td>2</td>
-					<td>Родитель</td>
-					<td class="text-left">{{ $cat->parent_id ? $author->parent->name : 'нет' }}</td>
+					<td>Дата рождения</td>
+					<td class="text-left">{{ $author->date_birth ? $author->date_birth : 'не указана' }}</td>
 				</tr>
-
-				<!-- category tags -->
+				<!-- books -->
 				<tr>
 					<td>3</td>
-					<td>Теги</td>
+					<td>Книги</td>
 					<td class="text-left">
-						@if ($cat->tags)
+						@if ($author->books)
 							<ol>
-								@foreach($author->tags as $tag)
+								@foreach($author->books as $book)
 									<li>
-										<? printf('<a href="/tag/%s">%s</a>', $tag->id, $tag->title); ?>
+										<? printf('<a href="/book/%s">%s</a>', $book->id, $book->title); ?>
 									</li>
 								@endforeach
 							</ol>

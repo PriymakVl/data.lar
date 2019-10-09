@@ -13,7 +13,7 @@ class CategoryController extends Controller
     	return view('category.categories.base', compact('cats'));
     }
 
-    public function index(Request $request, $id)
+    public function index($id)
     {
     	$cat = Category::find($id);
     	return view('category.index.base', compact('cat'));
@@ -22,7 +22,7 @@ class CategoryController extends Controller
      public function add(Request $request)
     {
         if ($request->isMethod('get')) return view('category.add.base');
-        $request->validate(['name' => 'string|max:255']);
+        $this->validate($request, ['name' => 'string|max:255']);
         $cat = Category::create($request->all());
         if ($cat) return redirect()->route('cat', ['id' => $cat->id])->with('success', 'Категория успешно добавлена');
         return redirect('cats')->with('error', 'Ошибка при добавлении категории');
@@ -35,7 +35,7 @@ class CategoryController extends Controller
         return view('category.edit.base', compact('cat'));
     }
 
-    private function update($request, $book)
+    private function update($request, $cat)
     {
         $cat->update($request->all());
         return redirect()->route('cat', ['id' => $cat->id])->with('success', 'Категория успешно отредактирована');
@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        if (Category::destroy($id)) return redirect('books')->with('success', 'Категория успешно удалена');
+        if (Category::destroy($id)) return redirect()->route('cats')->with('success', 'Категория успешно удалена');
         return redirect()->back()->with('error', 'Ошибка при удалении категории');
     }
 }

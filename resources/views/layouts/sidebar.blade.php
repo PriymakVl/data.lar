@@ -24,4 +24,10 @@
       Категории
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tags">
+      <span data-feather="bookmark"></span>
+      Теги
+    </a>
+  </li>
 </ul>

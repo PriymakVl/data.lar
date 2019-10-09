@@ -2,9 +2,9 @@
 
 @section('sidebar')
 	@parent
-	@include('author.index.sidebar')
+	@include('tag.tags.sidebar')
 @endsection
 
 @section('content')
-	@include('author.index.content')
+	@include('tag.tags.content')
 @endsection
