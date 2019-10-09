@@ -2,7 +2,7 @@
 
 @section('sidebar')
 	@parent
-	@include('author.authors.sidebar')
+	@include('category.categories.sidebar')
 @endsection
 
 @section('content')

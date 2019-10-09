@@ -43,4 +43,8 @@ Route::get('/quote/{id}', ['as' => 'quote', 'uses' => 'QuoteController@index']);
 
 //category
 Route::get('/categories', ['as' => 'cats', 'uses' => 'CategoryController@categories']);
+Route::match(['get', 'post'], '/category/add', ['as' => 'cat_add', 'uses' => 'CategoryController@add']);
+Route::match(['get', 'post'], '/category/edit/{id?}', ['as' => 'cat_edit', 'uses' => 'CategoryController@edit']);
+Route::get('/category/delete/{id}', ['as' => 'cat_delete', 'uses' => 'CategoryController@delete']);
+Route::get('/category/{id}', ['as' => 'cat', 'uses' => 'CategoryController@index']);
 
