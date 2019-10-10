@@ -4,7 +4,7 @@
   	@include('layouts.messages')
   
 	<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
-	    <h1 class="h2">Информация о категории</h1>
+	    <h1 class="h2">Информация о теге</h1>
 	</div>
 
 	<div class="table-responsive">
@@ -23,30 +23,13 @@
 		        <tr>
 					<td>1</td>
 					<td>Название</td>
-					<td class="text-left">{{ $cat->name }}</td>
+					<td class="text-left">{{ $tag->name }}</td>
 				</tr>
 				<tr>
 					<td>2</td>
-					<td>Родитель</td>
-					<td class="text-left">{{ $cat->parent_id ? $author->parent->name : 'нет' }}</td>
-				</tr>
-
-				<!-- category tags -->
-				<tr>
-					<td>3</td>
-					<td>Теги</td>
+					<td>Категория</td>
 					<td class="text-left">
-						@if ($cat->tags)
-							<ol>
-								@foreach($author->tags as $tag)
-									<li>
-										<? printf('<a href="/tag/%s">%s</a>', $tag->id, $tag->title); ?>
-									</li>
-								@endforeach
-							</ol>
-						@else
-							<span calss="text-danger">нет</span>
-						@endif
+						<a href="/category/{{ $tag->category->id }}">{{ $tag->category->name }}</a>
 					</td>
 				</tr>
 		    </tbody>

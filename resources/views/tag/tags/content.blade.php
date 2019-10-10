@@ -30,7 +30,7 @@
             <tr>
               <td>{{ $loop->index + 1 }}</td>
               <td class="text-left">
-                <? printf('<a href="/category/%s">%s</a>', $tag->id, $tag->name); ?>
+                <? printf('<a href="/tag/%s">%s</a>', $tag->id, $tag->name); ?>
               </td>
             </tr>
         @empty

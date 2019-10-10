@@ -10,7 +10,7 @@ class QuoteController extends Controller
     public function quotes()
     {
 
-    	$quotes = Quote::orderBy('rating', 'desc')->paginate(5);
+    	$quotes = Quote::orderBy('rating', 'desc')->paginate(50);
     	return view('quote.quotes.base', compact('quotes'));
     }
 

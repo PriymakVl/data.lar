@@ -37,12 +37,9 @@
 					<td>Теги</td>
 					<td class="text-left">
 						@if ($cat->tags)
-							<ol>
-								@foreach($author->tags as $tag)
-									<li>
-										<? printf('<a href="/tag/%s">%s</a>', $tag->id, $tag->title); ?>
-									</li>
-								@endforeach
+							@foreach($cat->tags as $tag)
+								<? printf('<a href="/tag/%s">%s</a>, ', $tag->id, $tag->name); ?>
+							@endforeach
 							</ol>
 						@else
 							<span calss="text-danger">нет</span>

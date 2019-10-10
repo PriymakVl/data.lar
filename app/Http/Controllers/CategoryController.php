@@ -16,7 +16,6 @@ class CategoryController extends Controller
     public function index($id)
     {
     	$cat = Category::find($id);
-        dd($cat->tags);
     	return view('category.index.base', compact('cat'));
     }
 

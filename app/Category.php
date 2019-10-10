@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Tag;
 
 class Category extends Model
 {
@@ -12,7 +13,6 @@ class Category extends Model
     protected $table = 'categories';
     protected $fillable = ['name', 'parent_id'];
     public $parent;
-    public $tags;
 
     public function getParentAttribute()
     {
@@ -21,7 +21,6 @@ class Category extends Model
 
     public function tags()
     {
-    	// return $this->hasMany('App\Tags', 'cat_id');
-    	return App\Tags::where('cat_id', $this->id)->get();
+    	return $this->hasMany('App\Tag', 'cat_id')->orderBy('name');
     }
 }
