@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-	@include('category.add.content')
+	@include('tag.add.content')
 @endsection

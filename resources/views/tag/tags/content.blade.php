@@ -14,7 +14,7 @@
         This week
       </button>
     </div>
-  </divtags
+  </div>
 
   <!-- table authors -->
   <div class="table-responsive">
@@ -35,7 +35,7 @@
             </tr>
         @empty
           <tr>
-            <td colspan="2" class="text-center text-danger">Категорий еще нет</td>
+            <td colspan="2" class="text-center text-danger">Тегов еще нет</td>
           </tr>
         @endforelse
       </tbody>

@@ -40,6 +40,11 @@ Route::match(['get', 'post'], '/quote/file/{id?}', ['as' => 'quote_file', 'uses'
 Route::get('/quote/{id}', ['as' => 'quote', 'uses' => 'QuoteController@index']);
 
 //tag
+Route::get('/tags', ['as' => 'tags', 'uses' => 'TagController@tags']);
+Route::match(['get', 'post'], '/tag/add', ['as' => 'tag_add', 'uses' => 'TagController@add']);
+Route::match(['get', 'post'], '/tag/edit/{id?}', ['as' => 'tag_edit', 'uses' => 'TagController@edit']);
+Route::get('/tag/delete/{id}', ['as' => 'tag_delete', 'uses' => 'TagController@delete']);
+Route::get('/tag/{id}', ['as' => 'tag', 'uses' => 'TagController@index']);
 
 //category
 Route::get('/categories', ['as' => 'cats', 'uses' => 'CategoryController@categories']);

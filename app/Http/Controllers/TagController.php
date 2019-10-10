@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tag;
 
 class TagController extends Controller
 {
-     public function categories()
+     public function tags()
     {
-    	$tags = Tag::where('parent_id', 0)->orderBy('name')->paginate(5);
+    	$tags = Tag::orderBy('name')->paginate(5);
     	return view('tag.tags.base', compact('tags'));
     }
 
@@ -21,7 +22,7 @@ class TagController extends Controller
      public function add(Request $request)
     {
         if ($request->isMethod('get')) return view('tag.add.base');
-        $this->validate($request, ['name' => 'string|max:255']);
+        $this->validate($request, ['name' => 'required|string|max:255', 'cat_id' => 'required|integer']);
         $tag = Tag::create($request->all());
         if ($tag) return redirect()->route('tag', ['id' => $tag->id])->with('success', 'Тег успешно добавлен');
         return redirect()->route('tags')->with('error', 'Ошибка при добавлении тега');
@@ -42,7 +43,7 @@ class TagController extends Controller
 
     public function delete($id)
     {
-        if (Category::destroy($id)) return redirect()->route('tags')->with('success', 'Тег успешно удален');
+        if (Tag::destroy($id)) return redirect()->route('tags')->with('success', 'Тег успешно удален');
         return redirect()->back()->with('error', 'Ошибка при удалении тега');
     }
 }
