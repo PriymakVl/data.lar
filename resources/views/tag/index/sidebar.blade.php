@@ -12,6 +12,12 @@
     </a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="/tag/indexing/{{ $tag->id }}">
+      <span data-feather="edit"></span>
+      Проиндексировать тег
+    </a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" href="/tag/delete/{{ $tag->id }}">
       <span data-feather="trash"></span>
       Удалить тег

@@ -46,4 +46,11 @@ class TagController extends Controller
         if (Tag::destroy($id)) return redirect()->route('tags')->with('success', 'Тег успешно удален');
         return redirect()->back()->with('error', 'Ошибка при удалении тега');
     }
+
+    public function indexing($id)
+    {
+        dd($id);
+        $tag = Tag::find($id);
+        $tag->indexing();
+    }
 }
