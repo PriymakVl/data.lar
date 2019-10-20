@@ -10,7 +10,7 @@ class Quote extends Model
 	use SoftDeletes;
 
 	protected $table = 'quotes';
-    protected $fillable = ['user_id', 'book_id', 'text', 'rating'];
+    protected $fillable = ['author_id', 'book_id', 'text', 'rating'];
 
     public function book()
     {
@@ -46,7 +46,8 @@ class Quote extends Model
             if(self::where('text', $quote)->first()) continue;
             $counter++;
             $params = ['author_id' => $request->author_id, 'book_id' => $request->book_id, 'text' => $quote, 'rating' => 0];
-            self::create($params);
+            $quote = self::create($params);
+            if ($request->tag_id) QuoteTag::add($request->tag_id, $quote->id);
         }
         return $counter;
     }

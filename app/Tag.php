@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Quote;
+use App\QuoteTag;
 
 class Tag extends Model
 {
+    use SoftDeletes;
+
 	protected $table = 'tags';
     protected $fillable = ['name', 'cat_id'];
 
@@ -14,14 +19,16 @@ class Tag extends Model
     	return $this->belongsTo('App\Category', 'cat_id', 'id');
     }
 
+    public function quotes()
+    {
+        return $this->belongsToMany(Quote::class);
+    }
+
     public function indexing()
     {
     	$ids = $this->getIds();
-    	dd($ids);
     	if (!$ids) return;
-    	$ids_exist = QuoteTag::find('quote_id')->where('tag_id', $this->id)->asarray()->get();
-    	dd($ids_exist);
-    	$ids_exist = $ids_
+    	$ids_exist = QuoteTag::where('tag_id', $this->id)->pluck('id')->toArray();
     	$ids_new = array_diff($ids, $ids_exist);
     	$this->addIndex($ids_new);
     }
@@ -33,7 +40,7 @@ class Tag extends Model
     	$ids = [];
     	$needle = $this->preparationForIndexing();
     	foreach ($quotes as $quote) {
-    		if (mb_stripos($quote->text, $needle)) $ids[] = $quote->id;
+    		if (mb_stripos($quote->text, $needle) !== false) $ids[] = $quote->id;
     	}
     	return $ids;
     }

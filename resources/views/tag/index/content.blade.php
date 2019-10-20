@@ -29,7 +29,11 @@
 					<td>2</td>
 					<td>Категория</td>
 					<td class="text-left">
-						<a href="/category/{{ $tag->category->id }}">{{ $tag->category->name }}</a>
+						@if ($tag->cat_id)
+							<a href="/category/{{ $tag->category->id }}">{{ $tag->category->name }}</a>
+						@else
+							<span class="text-danger">не определена</span>
+						@endif
 					</td>
 				</tr>
 		    </tbody>

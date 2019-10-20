@@ -1,4 +1,10 @@
 <ul class="nav flex-column">
+   <li class="nav-item">
+    <a class="nav-link" href="/">
+      <span data-feather="home"></span>
+      Главная
+    </a>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="/quotes">
       <span data-feather="message-square"></span>

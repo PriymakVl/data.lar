@@ -18,47 +18,28 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>Header</th>
-          <th>Header</th>
-          <th>Header</th>
-          <th>Header</th>
+          <th>Наименование</th>
+          <th>Количество</th>
         </tr>
       </thead>
       <tbody>
+        <!-- quotes -->
         <tr>
-          <td>1,001</td>
-          <td>Lorem</td>
-          <td>ipsum</td>
-          <td>dolor</td>
-          <td>sit</td>
+          <td>1</td>
+          <td>Количество цитат</td>
+          <td>{{ $qty['quotes'] }}</td>
         </tr>
+        <!-- books -->
         <tr>
-          <td>1,002</td>
-          <td>amet</td>
-          <td>consectetur</td>
-          <td>adipiscing</td>
-          <td>elit</td>
+          <td>2</td>
+          <td>Количество книг</td>
+          <td>{{ $qty['books'] }}</td>
         </tr>
+        <!-- authors -->
         <tr>
-          <td>1,003</td>
-          <td>Integer</td>
-          <td>nec</td>
-          <td>odio</td>
-          <td>Praesent</td>
-        </tr>
-        <tr>
-          <td>1,003</td>
-          <td>libero</td>
-          <td>Sed</td>
-          <td>cursus</td>
-          <td>ante</td>
-        </tr>
-        <tr>
-          <td>1,004</td>
-          <td>dapibus</td>
-          <td>diam</td>
-          <td>Sed</td>
-          <td>nisi</td>
+          <td>3</td>
+          <td>Количество авторов</td>
+          <td>{{ $qty['authors'] }}</td>
         </tr>
       </tbody>
     </table>

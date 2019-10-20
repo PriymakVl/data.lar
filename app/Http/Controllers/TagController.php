@@ -23,6 +23,13 @@ class TagController extends Controller
     {
         if ($request->isMethod('get')) return view('tag.add.base');
         $this->validate($request, ['name' => 'required|string|max:255', 'cat_id' => 'required|integer']);
+        return $this->saveTag($request);
+    }  
+
+    private function saveTag($request)
+    {
+         $tag = Tag::where('name', trim($request->name))->first();
+        if ($tag) return redirect()->route('tag', ['id' => $tag->id])->with('error', 'Такой тег уже сущестует');
         $tag = Tag::create($request->all());
         if ($tag) return redirect()->route('tag', ['id' => $tag->id])->with('success', 'Тег успешно добавлен');
         return redirect()->route('tags')->with('error', 'Ошибка при добавлении тега');
@@ -49,8 +56,8 @@ class TagController extends Controller
 
     public function indexing($id)
     {
-        dd($id);
-        $tag = Tag::find($id);
+        $tag = (Tag::find($id));
         $tag->indexing();
+        return redirect()->back()->with('success', 'Индексация тега произведена');
     }
 }

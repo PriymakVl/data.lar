@@ -43,7 +43,7 @@
 					<td>4</td>
 					<td>Автор</td>
 					<td class="text-left">
-						@if($quote->author)
+						@if($quote->author_id)
 							<a href="/author/{{ $quote->author->id }}">{{ $quote->author->full_name }}</a>
 						@else
 							<span>нет</span>

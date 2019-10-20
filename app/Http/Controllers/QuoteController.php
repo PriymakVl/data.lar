@@ -10,7 +10,7 @@ class QuoteController extends Controller
     public function quotes()
     {
 
-    	$quotes = Quote::orderBy('rating', 'desc')->paginate(50);
+    	$quotes = Quote::orderBy('rating', 'desc')->paginate(8);
     	return view('quote.quotes.base', compact('quotes'));
     }
 
@@ -23,9 +23,12 @@ class QuoteController extends Controller
     public function add(Request $request)
     {
         if ($request->isMethod('get')) return view('quote.add.base');
+        $quote = Quote::where('text', trim($request->text))->first();
+        if ($quote) return redirect()->route('quote', ['id' => $quote->id])->with('error', 'Такая цитата уже существует');
         $quote = Quote::create($request->all());
-        if ($quote) return redirect()->route('quote', ['id' => $quote->id])->with('success', 'Цитата успешно добавлен');
-        return redirect('quotes')->with('error', 'Ошибка при добавлении цитата');
+        if (!$quote) redirect('quotes')->with('error', 'Ошибка при добавлении цитата');
+        // if ($request->tag_id) QuoteTeg::add($request->tag_id, $quote->id);
+        return redirect()->route('quote', ['id' => $quote->id])->with('success', 'Цитата успешно добавлен');
     }
 
     public function edit(Request $request)
@@ -56,6 +59,7 @@ class QuoteController extends Controller
 
     public function file(Request $request)
     {
+        dd($request->all());
         if($request->isMethod('post')) return $this->uploadFile($request);
         return view('quote.file.base');
     }
