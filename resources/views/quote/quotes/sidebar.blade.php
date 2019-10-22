@@ -11,4 +11,10 @@
       Загрузить файл с цитатами
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/quote/write">
+      <span data-feather="download"></span>
+      Записать цитаты в файл
+    </a>
+  </li>
 </ul>

@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Quote;
+use Storage;
 
 class QuoteController extends Controller
 {
     public function quotes()
     {
-
     	$quotes = Quote::orderBy('rating', 'desc')->paginate(8);
     	return view('quote.quotes.base', compact('quotes'));
     }
@@ -70,5 +70,16 @@ class QuoteController extends Controller
         $qty = Quote::addQuotesFromFile($request);
         $messages = "Загружено {$qty} цитаты";
         return redirect()->route('quotes')->with('success', $messages);
+    }
+
+    public function write()
+    {
+        $quotes = Quote::get();
+        $file = 'temp/quotes.txt';
+        foreach ($quotes as $quote) {
+            $text = trim($quote->text);
+            Storage::append($file, $text);
+        }
+        dd('exit');
     }
 }
