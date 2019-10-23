@@ -4,6 +4,7 @@
 
 	$authors = Author::orderBy('last_name')->get();
 	$statuses = [Book::STATUS_NOT_READ, Book::STATUS_SPEED_READ, Book::STATUS_READ, Book::STATUS_AUDIO, Book::STATUS_OUTLINED];
+	$genres = config('genres');
 ?>
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -15,9 +16,20 @@
     	<!-- verify token -->
 		{{ csrf_field() }}
 
+		<!-- genres -->
+        <div class="form-group">
+			<label>Жанр:</label>
+			<select class="form-control" name="id_author">
+				<option value="0">не выбран</option>
+				@foreach ($genres  as $value => $name)
+					<option value="{{ $value }}">{{ $name }}</option>
+				@endforeach
+			</select>
+        </div>
+
 		<!-- authors -->
         <div class="form-group">
-			<label>Авторы:</label>
+			<label>Автор:</label>
 			<select class="form-control" name="id_author">
 				<option value="0">не выбран</option>
 				@foreach ($authors as $author)
