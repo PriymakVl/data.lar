@@ -59,7 +59,6 @@ class QuoteController extends Controller
 
     public function file(Request $request)
     {
-        dd($request->all());
         if($request->isMethod('post')) return $this->uploadFile($request);
         return view('quote.file.base');
     }
@@ -75,26 +74,15 @@ class QuoteController extends Controller
     public function write()
     {
         $quotes = Quote::get();
-        $file = 'temp/quotes.txt';
-        foreach ($quotes as $quote) {
-            $text = trim($quote->text);
-            Storage::append($file, $text);
-        }
+        if (!$quotes) exit('not quotes');
 
-        $source = 'filename.txt';
-        $destName = 'имя.txt';
         header('HTTP/1.1 200 OK');
-        header("Content-Length: " . filesize($source));
         header("Content-Description: file transfer");
         header("Content-transfer-encoding: binary");
-        header('Content-Disposition: attachment; filename="' . $destName . '"');
+        header('Content-Disposition: attachment; filename="quotes.txt"');
          
-        if ($fh = fopen($source, 'rb')) {
-            while (!feof($fh)) {
-                print fread($fh, 1024);
-            }
-            fclose($fh);
+        foreach ($quotes as $quote) {
+            echo trim($quote->text), PHP_EOL;
         }
-        dd('exit');
     }
 }
