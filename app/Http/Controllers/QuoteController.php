@@ -80,6 +80,21 @@ class QuoteController extends Controller
             $text = trim($quote->text);
             Storage::append($file, $text);
         }
+
+        $source = 'filename.txt';
+        $destName = 'имя.txt';
+        header('HTTP/1.1 200 OK');
+        header("Content-Length: " . filesize($source));
+        header("Content-Description: file transfer");
+        header("Content-transfer-encoding: binary");
+        header('Content-Disposition: attachment; filename="' . $destName . '"');
+         
+        if ($fh = fopen($source, 'rb')) {
+            while (!feof($fh)) {
+                print fread($fh, 1024);
+            }
+            fclose($fh);
+        }
         dd('exit');
     }
 }
