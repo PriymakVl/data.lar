@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Quote;
 use Storage;
+use Route;
 
 class QuoteController extends Controller
 {
@@ -84,5 +85,15 @@ class QuoteController extends Controller
         foreach ($quotes as $quote) {
             echo trim($quote->text), PHP_EOL;
         }
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        dd($search);
+        $quotes = Quote::where('text', 'like', "%{$search}%")->get();
+        if ($quotes->isEmpty()) return redirect()->back()->with('error', 'Цитат не найдено');
+        else if ($quotes->count() == 1) return redirect()->route('quote', ['id' => $quotes[0]->id])->with('success', 'Цитата успешно найдена');
+        return view('quotes.search.base', compact('quotes'))->with('success', 'Найдено несколько цитат');
     }
 }

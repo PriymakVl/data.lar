@@ -38,6 +38,7 @@ Route::match(['get', 'post'], '/quote/edit/{id?}', ['as' => 'quote_edit', 'uses'
 Route::get('/quote/delete/{id}', ['as' => 'quote_delete', 'uses' => 'QuoteController@delete']);
 Route::any('/quote/rating', 'QuoteController@rating');
 Route::match(['get', 'post'], '/quote/file/{id?}', ['as' => 'quote_file', 'uses' => 'QuoteController@file']);
+Route::get('/quote/search', ['as' => 'quote_search', 'uses' => 'QuoteController@search']);
 Route::get('/quote/{id}', ['as' => 'quote', 'uses' => 'QuoteController@index']);
 
 
