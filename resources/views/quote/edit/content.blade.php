@@ -1,6 +1,7 @@
 <?php
 	$authors = DB::table('authors')->orderBy('last_name')->get();
 	$books = DB::table('books')->orderBy('title')->get();
+	$tags = DB::table('tags')->orderBy('name')->get();
 	$author_id = $quote->author ? $quote->author->id : null;
 	$book_id = $quote->book ? $quote->book->id : null;
 ?>
@@ -30,6 +31,17 @@
 				<option value="0">Не выбрана</option>
 				@foreach ($books as $book)
 					<option value="{{ $book->id }}"  <?= ($book->id == $book_id) ? 'selected' : '' ?>>{{ $book->title }}</option>
+				@endforeach
+			</select>
+        </div>
+
+        <!-- tags -->
+        <div class="form-group">
+			<label>Теги:</label>
+			<select class="form-control" name="tag_id">
+				<option value="0">Не выбран</option>
+				@foreach ($tags as $tag)
+					<option value="{{ $tag->id }}">{{ $tag->name }}</option>
 				@endforeach
 			</select>
         </div>

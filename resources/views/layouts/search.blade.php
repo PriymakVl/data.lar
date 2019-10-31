@@ -16,7 +16,7 @@
 	$placeholder = 'Поиск цитаты';
 ?>
 
-<form action="/{{ $controller }}/search" method="get" class="form-inline w-400">
-	<input class="form-control form-control-dark mx-2" type="text" name="search" placeholder="{{ $placeholder }}" aria-label="Search">
-	<button type="submit" class="btn btn-outline-success">Submit</button>
+<form action="/{{ $controller }}/search" method="get" class="form-inline">
+	<input width="300" class="form-control form-control-dark mx-2" type="text" name="search" placeholder="{{ $placeholder }}" aria-label="Search">
+	<button type="submit" class="btn btn-outline-success">Поиск</button>
 </form>

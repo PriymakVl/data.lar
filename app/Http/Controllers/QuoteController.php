@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Quote;
 use Storage;
 use Route;
+use App\Quote;
+use App\QuoteTag;
 
 class QuoteController extends Controller
 {
@@ -42,6 +43,7 @@ class QuoteController extends Controller
     private  function update($request, $quote)
     {
         $quote->update($request->all());
+        if ($request->tag_id) QuoteTag::add($request->tag_id, $request->id);
         return redirect()->route('quote', ['id' => $quote->id])->with('success', 'Цитата  успешно отредактирована');
     }
 
@@ -90,10 +92,9 @@ class QuoteController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        dd($search);
         $quotes = Quote::where('text', 'like', "%{$search}%")->get();
         if ($quotes->isEmpty()) return redirect()->back()->with('error', 'Цитат не найдено');
         else if ($quotes->count() == 1) return redirect()->route('quote', ['id' => $quotes[0]->id])->with('success', 'Цитата успешно найдена');
-        return view('quotes.search.base', compact('quotes'))->with('success', 'Найдено несколько цитат');
+        return view('quote.search.base', compact('quotes'))->with('success', 'Найдено несколько цитат');
     }
 }
