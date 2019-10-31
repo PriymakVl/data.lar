@@ -11,7 +11,7 @@ use App\QuoteTag;
 class QuoteController extends Controller
 {
     public function quotes()
-    {
+    {     
     	$quotes = Quote::orderBy('rating', 'desc')->paginate(8);
     	return view('quote.quotes.base', compact('quotes'));
     }
