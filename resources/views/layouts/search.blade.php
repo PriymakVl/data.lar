@@ -1,5 +1,6 @@
 <?php
-	// $controller = request()->segment(1);
+	// $controller = request()->route()->getActionMethod();//->segment(1);
+	// dd($controller->as);
 	// if ($controller == 'quote' || $controller == 'quotes') {
 	// 	$placeholder = 'Поиск цитаты';
 	// 	$controller = 'quote';
