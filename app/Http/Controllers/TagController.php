@@ -22,7 +22,7 @@ class TagController extends Controller
      public function add(Request $request)
     {
         if ($request->isMethod('get')) return view('tag.add.base');
-        $this->validate($request, ['name' => 'required|string|max:255', 'cat_id' => 'required|integer']);
+        $this->validate($request, ['name' => 'required|string|max:255', 'cat_id' => 'integer']);
         return $this->saveTag($request);
     }  
 

@@ -3,14 +3,15 @@
   @include('layouts.messages')
   
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
-    <h1 class="h2">Результаты поиска</h1>
+    <h1 class="h2">Результаты поиска по "<span class="text-danger">{{ $search }}</span>"</h1>
   </div>
 
 	<table class="table table-bordered text-center">
       <thead class="bg-light">
         <tr>
           <th width="40">#</th>
-          <th>Автор</th>
+          <th>Цитаты</th>
+          <th width="90">Теги</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,11 @@
               <td>{{ $loop->index + 1 }}</td>
               <td class="text-left">
                 <? printf('<a href="/quote/%s">%s</a>', $quote->id, $quote->text); ?>
+              </td>
+              <td>
+                @foreach ($tags as $item)
+                  {{ $item->tag->name }}
+                @endforeach
               </td>
             </tr>
         @endforeach

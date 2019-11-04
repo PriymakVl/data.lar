@@ -95,6 +95,6 @@ class QuoteController extends Controller
         $quotes = Quote::where('text', 'like', "%{$search}%")->get();
         if ($quotes->isEmpty()) return redirect()->back()->with('error', 'Цитат не найдено');
         else if ($quotes->count() == 1) return redirect()->route('quote', ['id' => $quotes[0]->id])->with('success', 'Цитата успешно найдена');
-        return view('quote.search.base', compact('quotes'))->with('success', 'Найдено несколько цитат');
+        return view('quote.search.base', compact('quotes', 'search'))->with('success', 'Найдено несколько цитат');
     }
 }
