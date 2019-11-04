@@ -51,4 +51,9 @@ class Quote extends Model
         }
         return $counter;
     }
+
+    public function tags()
+    {
+        return $this->hasMany('App\QuoteTag', 'quote_id');
+    }
 }

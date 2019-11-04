@@ -16,4 +16,9 @@ class QuoteTag extends Model
     {
     	return self::create(['tag_id' => $tag_id, 'quote_id' => $quote_id]);
     }
+
+    public function tag()
+    {
+    	return $this->hasOne('App\Tag', 'id', 'tag_id');
+    }
 }
