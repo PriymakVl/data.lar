@@ -1,3 +1,6 @@
+<?
+  $page_last = request('page') ? request('page') - 1 : 0;
+?>
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
   <!-- messages -->
@@ -32,7 +35,7 @@
         <tbody class="table-striped">
         @forelse ($quotes as $quote)
           <tr>
-              <td class="text-center">{{ $loop->index + 1 }}</td>
+              <td class="text-center">{{ ($loop->index + 1) + ($limit * $page_last) }}</td>
               <td>
                   <? printf('<a href="/quote/%s">%s</a>', $quote->id, $quote->text); ?>
               </td>
