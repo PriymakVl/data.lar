@@ -14,7 +14,8 @@ class QuoteController extends Controller
     {   
         $limit = 8;
     	$quotes = Quote::orderBy('rating', 'desc')->paginate($limit);
-    	return view('quote.quotes.base', compact('quotes', 'limit'));
+        $file_empty = (filesize('/storage/app/temp/quotes.txt') == 0) ? true : false;
+    	return view('quote.quotes.base', compact('quotes', 'limit', 'file_empty'));
     }
 
     public function index($id)
@@ -88,6 +89,29 @@ class QuoteController extends Controller
         foreach ($quotes as $quote) {
             echo trim($quote->text), PHP_EOL;
         }
+    }
+
+    public function donwloadfile(Request $request)
+    {
+        header('HTTP/1.1 200 OK');
+        header("Content-Description: file transfer");
+        header("Content-transfer-encoding: binary");
+        header('Content-Disposition: attachment; filename="quotes.txt"');
+        if ($fh = fopen('temp/quotes.txt', 'rb')) {
+            while (!feof($fh)) print fread($fh, 1024);
+        }
+        fclose($fh);
+    }
+
+    public function inputfile()
+    {
+        $search = $request->input('search');
+        $quotes = Quote::where('text', 'like', "%{$search}%")->get();
+        if (!$quotes) return;
+        foreach ($quotes as $quote) {
+            file_put_contents('temp/quotes.txt', $quote->text, FILE_APPEND);
+        }
+        return redirect()->route('quotes')->with('success', 'Цитаты добавлены в файл');
     }
 
     public function search(Request $request)
