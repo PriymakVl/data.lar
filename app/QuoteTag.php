@@ -12,7 +12,7 @@ class QuoteTag extends Model
 	protected $table = 'quotes_tags';
     protected $fillable = ['quote_id', 'tag_id'];
 
-    public function add($tag_id, $quote_id)
+    public static function add($tag_id, $quote_id)
     {
     	return self::create(['tag_id' => $tag_id, 'quote_id' => $quote_id]);
     }

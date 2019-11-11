@@ -22,9 +22,7 @@
                 <? printf('<a href="/quote/%s">%s</a>', $quote->id, $quote->text); ?>
               </td>
               <td>
-                @foreach ($tags as $item)
-                  {{ $item->tag->name }}
-                @endforeach
+
               </td>
             </tr>
         @endforeach

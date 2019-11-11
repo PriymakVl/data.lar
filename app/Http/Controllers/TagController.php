@@ -42,7 +42,7 @@ class TagController extends Controller
         return view('tag.edit.base', compact('tag'));
     }
 
-    private function update($request, $cat)
+    private function update($request, $tag)
     {
         $tag->update($request->all());
         return redirect()->route('tag', ['id' => $tag->id])->with('success', 'Тег успешно отредактирован');
