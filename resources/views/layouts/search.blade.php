@@ -1,20 +1,19 @@
 <?php
-	// $controller = request()->route()->getActionMethod();//->segment(1);
-	// dd($controller->as);
-	// if ($controller == 'quote' || $controller == 'quotes') {
-	// 	$placeholder = 'Поиск цитаты';
-	// 	$controller = 'quote';
-	// }
-	// else if ($controller == 'author' || $controller == 'authors') {
-	// 		$placeholder = 'Поиск автора';
-	// 		$controller = 'author';
-	// }
-	// else if ($controller == 'book' || $controller == 'books') {
-	// 	$placeholder = 'Поиск автора';
-	// 	$controller = 'book';
-	// }
-	$controller = 'quote';
-	$placeholder = 'Поиск цитаты';
+	$controller = request()->route()->getAction()['as'];
+	$placeholder = '';
+	
+	if ($controller == 'quote' || $controller == 'quotes'|| $controller == 'quote_edit') {
+		$placeholder = 'Поиск цитаты';
+		$controller = 'quote';
+	}
+	else if ($controller == 'author' || $controller == 'authors' || $controller == 'author_edit') {
+			$placeholder = 'Поиск автора';
+			$controller = 'author';
+	}
+	else if ($controller == 'book' || $controller == 'books'|| $controller == 'book_edit') {
+		$placeholder = 'Поиск книги';
+		$controller = 'book';
+	}
 ?>
 
 <form action="/{{ $controller }}/search" method="get" class="form-inline">

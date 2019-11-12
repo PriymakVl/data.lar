@@ -14,7 +14,8 @@ class QuoteController extends Controller
     {   
         $limit = 8;
     	$quotes = Quote::orderBy('rating', 'desc')->paginate($limit);
-        $file_empty = (filesize('/storage/app/temp/quotes.txt') == 0) ? true : false;
+        // $file_empty = (filesize('temp/quotes.txt') == 0) ? true : false;
+        $file_empty = true;
     	return view('quote.quotes.base', compact('quotes', 'limit', 'file_empty'));
     }
 
@@ -93,14 +94,16 @@ class QuoteController extends Controller
 
     public function donwloadfile(Request $request)
     {
-        header('HTTP/1.1 200 OK');
-        header("Content-Description: file transfer");
-        header("Content-transfer-encoding: binary");
-        header('Content-Disposition: attachment; filename="quotes.txt"');
-        if ($fh = fopen('temp/quotes.txt', 'rb')) {
-            while (!feof($fh)) print fread($fh, 1024);
-        }
-        fclose($fh);
+
+        dd('test');
+        // header('HTTP/1.1 200 OK');
+        // header("Content-Description: file transfer");
+        // header("Content-transfer-encoding: binary");
+        // header('Content-Disposition: attachment; filename="quotes.txt"');
+        // if ($fh = fopen('temp/quotes.txt', 'rb')) {
+        //     while (!feof($fh)) print fread($fh, 1024);
+        // }
+        // fclose($fh);
     }
 
     public function inputfile()
