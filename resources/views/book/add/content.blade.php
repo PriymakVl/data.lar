@@ -19,7 +19,7 @@
 		<!-- genres -->
         <div class="form-group">
 			<label>Жанр:</label>
-			<select class="form-control" name="id_author">
+			<select class="form-control" name="genr">
 				<option value="0">не выбран</option>
 				@foreach ($genres  as $value => $name)
 					<option value="{{ $value }}">{{ $name }}</option>
@@ -30,7 +30,7 @@
 		<!-- authors -->
         <div class="form-group">
 			<label>Автор:</label>
-			<select class="form-control" name="id_author">
+			<select class="form-control" name="author_id">
 				<option value="0">не выбран</option>
 				@foreach ($authors as $author)
 					<option value="{{ $author->id }}">{{ $author->last_name }}</option>

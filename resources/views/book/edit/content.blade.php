@@ -18,7 +18,7 @@
 		<!-- authors -->
         <div class="form-group">
 			<label>Авторы:</label>
-			<select class="form-control" name="id_author">
+			<select class="form-control" name="author_id">
 				<option value="0">не выбран</option>
 				@foreach ($authors as $author)
 					<option value="{{ $author->id }}" {{ $author->id == $book->author_id ? 'selected' : '' }}>

@@ -23,7 +23,7 @@ class BookController extends Controller
     public function add(Request $request)
     {
         if ($request->isMethod('get')) return view('book.add.base');
-        $request->validate(['title' => 'string|max:255']);
+        // $request->validate(['title' => 'string|max:255']);
         $book = Book::create($request->all());
         if ($book) return redirect()->route('book', ['id' => $book->id])->with('success', 'Книга успешно добавлена');
         return redirect('books')->with('error', 'Ошибка при добавлении книги');
