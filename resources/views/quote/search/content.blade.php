@@ -5,7 +5,7 @@
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
     <h1 class="h2">Результаты поиска по "<span class="text-danger">{{ $search }}</span>"</h1>
     <div class="btn-group mr-2">
-        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href= '/quote/inputfile?search={{ $search }}">Добавить в файл</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="add_quotes_to_file(<?= $search; ?>);">Добавить в файл</button>
         <button type="button" class="btn btn-sm btn-outline-secondary">Добавить тег</button>
       </div>
   </div>
@@ -33,3 +33,10 @@
       </tbody>
     </table>
 </main>
+
+<script type="text/javascript">
+  function add_quotes_to_file(search) {
+    alert(search);
+    //location.href= '/quote/inputfile?search={{ $search }}';
+  }
+</script>
