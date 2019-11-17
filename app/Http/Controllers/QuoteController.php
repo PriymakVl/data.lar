@@ -79,9 +79,9 @@ class QuoteController extends Controller
 
     public function write()
     {
+        dd('test');
         $quotes = Quote::get();
         if (!$quotes) exit('not quotes');
-
         header('HTTP/1.1 200 OK');
         header("Content-Description: file transfer");
         header("Content-transfer-encoding: binary");
@@ -109,6 +109,7 @@ class QuoteController extends Controller
     public function inputfile()
     {
         $search = $request->input('search');
+        dd($search);
         $quotes = Quote::where('text', 'like', "%{$search}%")->get();
         if (!$quotes) return;
         foreach ($quotes as $quote) {
