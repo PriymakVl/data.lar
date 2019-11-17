@@ -20,9 +20,9 @@ class BookController extends Controller
     	return view('book.index.base', compact('book'));
     }
 
-    public function add(Request $request)
+    public function add(Request $request, $author_id = false)
     {
-        if ($request->isMethod('get')) return view('book.add.base');
+        if ($request->isMethod('get')) return view('book.add.base', ['author_id' => $author_id]);
         // $request->validate(['title' => 'string|max:255']);
         $book = Book::create($request->all());
         if ($book) return redirect()->route('book', ['id' => $book->id])->with('success', 'Книга успешно добавлена');
@@ -68,5 +68,14 @@ class BookController extends Controller
         $book = Book::find($id);
         $book->uploadFile($request->file('book'));
         return redirect()->route('book', ['id' => $id])->with('success', 'Файл книги успешно загружен');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $books = Book::where('title', 'like', "%{$search}%")->get();
+        if ($books->isEmpty()) return redirect()->back()->with('error', 'Книга не найдена');
+        else if ($books->count() == 1) return redirect()->route('author', ['id' => $books[0]->id])->with('success', 'Книга успeшно найдена');
+        return view('book.search.base', compact('books'))->with('success', 'Найдено несколько книг');
     }
 }

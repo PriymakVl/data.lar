@@ -5,6 +5,7 @@
 	$authors = Author::orderBy('last_name')->get();
 	$statuses = [Book::STATUS_NOT_READ, Book::STATUS_SPEED_READ, Book::STATUS_READ, Book::STATUS_AUDIO, Book::STATUS_OUTLINED];
 	$genres = config('genres');
+
 ?>
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -33,7 +34,7 @@
 			<select class="form-control" name="author_id">
 				<option value="0">не выбран</option>
 				@foreach ($authors as $author)
-					<option value="{{ $author->id }}">{{ $author->last_name }}</option>
+					<option value="{{ $author->id }}" {{ $author->id == $author_id ? 'selected' : '' }}>{{ $author->last_name . ' ' . $author->first_name }}</option>
 				@endforeach
 			</select>
         </div>

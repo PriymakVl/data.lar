@@ -19,7 +19,7 @@
 			<select class="form-control" name="author_id">
 				<option value="0">Не выбран</option>
 				@foreach ($authors as $author)
-					<option value="{{ $author->id }}" <?= ($author->id == $author_id) ? 'selected' : '' ?>>{{ $author->last_name }}</option>
+					<option value="{{ $author->id }}" <?= ($author->id == $author_id) ? 'selected' : '' ?>>{{ $author->last_name . ' ' . $author->first_name }}</option>
 				@endforeach
 			</select>
         </div>

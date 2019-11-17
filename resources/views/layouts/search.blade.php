@@ -1,19 +1,19 @@
 <?php
 	$controller = request()->route()->getAction()['as'];
-	$placeholder = '';
 	
-	if ($controller == 'quote' || $controller == 'quotes'|| $controller == 'quote_edit') {
-		$placeholder = 'Поиск цитаты';
-		$controller = 'quote';
-	}
-	else if ($controller == 'author' || $controller == 'authors' || $controller == 'author_edit') {
+	if ($controller == 'author' || $controller == 'authors' || $controller == 'author_edit' || $controller == 'athor_search') {
 			$placeholder = 'Поиск автора';
 			$controller = 'author';
 	}
-	else if ($controller == 'book' || $controller == 'books'|| $controller == 'book_edit') {
+	else if ($controller == 'book' || $controller == 'books'|| $controller == 'book_edit' || $controller == 'book_search') {
 		$placeholder = 'Поиск книги';
 		$controller = 'book';
 	}
+	else {
+		$controller = 'quote';
+		$placeholder = 'Поиск цитаты';
+	}
+
 ?>
 
 <form action="/{{ $controller }}/search" method="get" class="form-inline">

@@ -22,7 +22,7 @@
 				<option value="0">не выбран</option>
 				@foreach ($authors as $author)
 					<option value="{{ $author->id }}" {{ $author->id == $book->author_id ? 'selected' : '' }}>
-						{{ $author->last_name }}
+						{{ $author->last_name . ' ' . $author->first_name  }}
 					</option>
 				@endforeach
 			</select>
