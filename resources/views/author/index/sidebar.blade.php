@@ -17,4 +17,10 @@
       Удалить автора
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/book/add/{{ $author->id }}">
+      <span data-feather="plus-square"></span>
+      Добавить книгу
+    </a>
+  </li>
 </ul>

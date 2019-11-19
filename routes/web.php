@@ -16,10 +16,11 @@ Route::get('/', ['as' => 'home', 'uses' => 'MainController@index']);
 //book
 Route::get('/books', ['as' => 'books', 'uses' => 'BookController@books']);
 Route::any('/book/rating', 'BookController@rating');
-Route::match(['get', 'post'], '/book/add', ['as' => 'book_add', 'uses' => 'BookController@add']);
+Route::match(['get', 'post'], '/book/add/{author_id?}', ['as' => 'book_add', 'uses' => 'BookController@add']);
 Route::match(['get', 'post'], '/book/edit/{id?}', ['as' => 'book_edit', 'uses' => 'BookController@edit']);
 Route::get('/book/delete/{id}', ['as' => 'book_delete', 'uses' => 'BookController@delete']);
 Route::match(['get', 'post'], '/book/file/{id?}', ['as' => 'book_file', 'uses' => 'BookController@file']);
+Route::get('/book/search', ['as' => 'book_search', 'uses' => 'BookController@search']);
 Route::get('/book/{id}', ['as' => 'book', 'uses' => 'BookController@index']);
 
 //author
