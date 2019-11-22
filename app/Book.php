@@ -26,6 +26,16 @@ class Book extends Model
 		return $this->belongsTo('App\Author');
 	}
 
+	public function quotes()
+	{
+		 return $this->hasMany('App\Quote');
+	}
+
+	public function countQuotes()
+	{
+		return $this->quotes ? count($this->quotes) : 0;
+	}
+
 	public static function convertStatus($status)
 	{
 		switch ($status) {

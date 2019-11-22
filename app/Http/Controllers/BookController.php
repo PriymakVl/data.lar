@@ -75,7 +75,7 @@ class BookController extends Controller
         $search = $request->input('search');
         $books = Book::where('title', 'like', "%{$search}%")->get();
         if ($books->isEmpty()) return redirect()->back()->with('error', 'Книга не найдена');
-        else if ($books->count() == 1) return redirect()->route('author', ['id' => $books[0]->id])->with('success', 'Книга успeшно найдена');
+        else if ($books->count() == 1) return redirect()->route('book', ['id' => $books[0]->id])->with('success', 'Книга успeшно найдена');
         return view('book.search.base', compact('books'))->with('success', 'Найдено несколько книг');
     }
 }

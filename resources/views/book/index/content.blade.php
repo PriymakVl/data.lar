@@ -69,9 +69,22 @@
 					</td>
 				</tr>
 
-				<!-- book description -->
+				<!-- book quotes -->
 				<tr>
 					<td>6</td>
+					<td>Цитаты</td>
+					<td> 
+						@if ($book->quotes)
+							<a href="/quote/book/{{ $book->id }}">{{ $book->countQuotes() }}</a>
+						@else
+							<span class="text-danger" >нет</span>
+						@endif
+					</td>
+				</tr>
+
+				<!-- book description -->
+				<tr>
+					<td>7</td>
 					<td>Описание книги</td>
 					<td class="text-left">{{ $book->description ? $book->description : '' }}</td>
 				</tr>
