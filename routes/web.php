@@ -29,6 +29,7 @@ Route::match(['get', 'post'], '/author/add', ['as' => 'author_add', 'uses' => 'A
 Route::get('/author/delete/{id}', ['as' => 'author_delete', 'uses' => 'AuthorController@delete']);
 Route::match(['get', 'post'], '/author/edit/{id?}', ['as' => 'author_edit', 'uses' => 'AuthorController@edit']);
 Route::get('/author/search', ['as' => 'author_search', 'uses' => 'AuthorController@search']);
+Route::get('/author/books/{id}', ['as' => 'author_books', 'uses' => 'AuthorController@books']);
 Route::get('/author/{id}', ['as' => 'author', 'uses' => 'AuthorController@index']);
 
 //quote
@@ -40,6 +41,7 @@ Route::get('/quote/delete/{id}', ['as' => 'quote_delete', 'uses' => 'QuoteContro
 Route::any('/quote/rating', 'QuoteController@rating');
 Route::match(['get', 'post'], '/quote/file/{id?}', ['as' => 'quote_file', 'uses' => 'QuoteController@file']);
 Route::get('/quote/search', ['as' => 'quote_search', 'uses' => 'QuoteController@search']);
+Route::get('/quote/input_file/{search}', ['as' => 'quote_input_file', 'uses' => 'QuoteController@input_file']);
 Route::get('/quote/{id}', ['as' => 'quote', 'uses' => 'QuoteController@index']);
 
 

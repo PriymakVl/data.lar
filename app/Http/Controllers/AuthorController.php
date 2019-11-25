@@ -48,6 +48,11 @@ class AuthorController extends Controller
         return redirect()->route('author', ['id' => $author->id])->with('success', 'Автор успешно отредактирован');
     }
 
+    public function books($id)
+    {
+        echo 'books';
+    }
+
     public function search(Request $request)
     {
         $search = $request->input('search');

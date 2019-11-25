@@ -2,6 +2,7 @@
 
 @section('sidebar')
 	@parent
+	@include('quote.search.sidebar')
 @endsection
 
 @section('content')

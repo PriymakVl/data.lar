@@ -79,7 +79,6 @@ class QuoteController extends Controller
 
     public function write()
     {
-        dd('test');
         $quotes = Quote::get();
         if (!$quotes) exit('not quotes');
         header('HTTP/1.1 200 OK');
@@ -106,16 +105,15 @@ class QuoteController extends Controller
         // fclose($fh);
     }
 
-    public function inputfile()
+    public function input_file(Request $request, $search)
     {
-        $search = $request->input('search');
-        dd($search);
         $quotes = Quote::where('text', 'like', "%{$search}%")->get();
-        if (!$quotes) return;
+        if (!$quotes) return redirect()->back()->with('error', 'Нет цитат для добавления');
         foreach ($quotes as $quote) {
-            file_put_contents('temp/quotes.txt', $quote->text, FILE_APPEND);
+            $text = $quote->text.PHP_EOL;
+            $res = file_put_contents('quotes.txt', $text, FILE_APPEND);
         }
-        return redirect()->route('quotes')->with('success', 'Цитаты добавлены в файл');
+        return redirect()->back()->with('success', 'Цитаты добавлены в файл');
     }
 
     public function search(Request $request)
