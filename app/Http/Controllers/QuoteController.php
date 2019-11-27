@@ -91,18 +91,16 @@ class QuoteController extends Controller
         }
     }
 
-    public function donwloadfile(Request $request)
+    public function download_file()
     {
-
-        dd('test');
-        // header('HTTP/1.1 200 OK');
-        // header("Content-Description: file transfer");
-        // header("Content-transfer-encoding: binary");
-        // header('Content-Disposition: attachment; filename="quotes.txt"');
-        // if ($fh = fopen('temp/quotes.txt', 'rb')) {
-        //     while (!feof($fh)) print fread($fh, 1024);
-        // }
-        // fclose($fh);
+        header('HTTP/1.1 200 OK');
+        header("Content-Description: file transfer");
+        header("Content-transfer-encoding: binary");
+        header('Content-Disposition: attachment; filename="quotes.txt"');
+        if ($fh = fopen('temp/quotes.txt', 'rb')) {
+            while (!feof($fh)) print fread($fh, 1024);
+        }
+        fclose($fh);
     }
 
     public function input_file(Request $request, $search)
@@ -111,7 +109,7 @@ class QuoteController extends Controller
         if (!$quotes) return redirect()->back()->with('error', 'Нет цитат для добавления');
         foreach ($quotes as $quote) {
             $text = $quote->text.PHP_EOL;
-            $res = file_put_contents('quotes.txt', $text, FILE_APPEND);
+            file_put_contents('temp/quotes.txt', $text, FILE_APPEND);
         }
         return redirect()->back()->with('success', 'Цитаты добавлены в файл');
     }

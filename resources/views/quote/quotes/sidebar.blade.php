@@ -19,7 +19,7 @@
   </li>
 
    <li class="nav-item">
-    <a class="nav-link" href="/quote/downloadfile">
+    <a class="nav-link" href="/quote/download_file">
       <span data-feather="download"></span>
       Скачать файл с цитатами
     </a>

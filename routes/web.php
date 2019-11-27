@@ -42,6 +42,7 @@ Route::any('/quote/rating', 'QuoteController@rating');
 Route::match(['get', 'post'], '/quote/file/{id?}', ['as' => 'quote_file', 'uses' => 'QuoteController@file']);
 Route::get('/quote/search', ['as' => 'quote_search', 'uses' => 'QuoteController@search']);
 Route::get('/quote/input_file/{search}', ['as' => 'quote_input_file', 'uses' => 'QuoteController@input_file']);
+Route::get('/quote/download_file', ['as' => 'quote_download_file', 'uses' => 'QuoteController@download_file']);
 Route::get('/quote/{id}', ['as' => 'quote', 'uses' => 'QuoteController@index']);
 
 
