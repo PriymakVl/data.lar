@@ -3,7 +3,7 @@
   @include('layouts.messages')
   
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
-    <h1 class="h2">Результаты поиска по "<span class="text-danger">{{ $search }}</span>"</h1>
+    <h1 class="h2">По запросу "<span class="text-danger">{{ $search }}</span>" найдено {{ count($quotes) }} цитат</h1>
     <div class="btn-group mr-2">
         <button type="button" class="btn btn-sm btn-outline-secondary" onclick="add_quotes_to_file(<?= $search; ?>);">Добавить в файл</button>
         <button type="button" class="btn btn-sm btn-outline-secondary">Добавить тег</button>
@@ -15,6 +15,7 @@
         <tr>
           <th width="40">#</th>
           <th>Цитаты</th>
+          <th width="70">Рейтинг</th>
           <th width="90">Теги</th>
         </tr>
       </thead>
@@ -26,6 +27,9 @@
                 <? printf('<a href="/quote/%s">%s</a>', $quote->id, $quote->text); ?>
               </td>
               <td>
+                <a href="#" id="rating">{{ $quote->rating }}</a>
+              </td>
+              <td>
 
               </td>
             </tr>
@@ -33,10 +37,3 @@
       </tbody>
     </table>
 </main>
-
-<script type="text/javascript">
-  function add_quotes_to_file(search) {
-    alert(search);
-    //location.href= '/quote/inputfile?search={{ $search }}';
-  }
-</script>
